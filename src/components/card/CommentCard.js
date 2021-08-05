@@ -35,7 +35,7 @@ const CommentCard = ({token, devApi, __id, current_user}) => {
 				target.scroll({ top: target.scrollHeight, behavior: 'smooth' });
 			});
 		}
-	}, [devApi, token]);
+	}, [devApi, token, __id]);
 
 	const addComment = (e) => {
 		e.preventDefault();
