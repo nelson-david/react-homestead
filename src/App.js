@@ -8,8 +8,8 @@ import Navbar from "./components/navigation/Navbar";
 import Home from "./pages/Home";
 import axios from "axios";
 
-const devApi = "http://localhost:7500/api/";
-const devURL = "http://localhost:7500/";
+const devApi = "https://homesteadapi.herokuapp.com/api/";
+const devURL = "https://homesteadapi.herokuapp.com/";
 // const devApi = "http://localhost:7500/api/";
 // const devURL = "http://localhost:7500/";
 
