@@ -1,0 +1,166 @@
+.breadcrumb-item+.breadcrumb-item::before{
+	content: "";
+	padding: 0px;
+	margin: 0px;
+	display: block;
+}
+.custom__header .custom__navbar{
+	border: none;
+	box-shadow: none;
+	border-bottom: 1px solid rgba(19,6,56,0.04);
+	padding: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: var(--nun-color);
+}
+.custom__header .custom__navbar .navbar__brand{
+	font-family: var(--zen);
+	font-weight: 800!important;
+	transition: 0.4s all ease-in-out;
+	color: var(--aliceblue);
+}
+.custom__header .custom__navbar .navbar__brand:hover{
+	color: var(--accent-color);
+}
+.custom__header .custom__navbar .navbar__brand i{
+	font-style: normal;
+	color: var(--hover-color);
+}
+.custom__header .custom__navbar .nav_content{
+	border: none;
+	padding: 0px;
+	font-family: var(--jost);
+	font-weight: 400!important;
+	justify-content: center;
+	margin-left: auto;
+}
+.custom__header .custom__navbar .nav_content.second{
+	border: none;
+}
+.custom__header .custom__navbar .nav_content .navbar-nav{
+	border: none;
+}
+.custom__header .custom__navbar .nav_content .navbar-nav .nav-item{
+	border: none;
+	padding: 0px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+.custom__header .custom__navbar .nav_content .navbar-nav .nav-item a{
+	border: 1px solid none;
+	display: block;
+	padding: 5.3px;
+	padding-bottom: 4.3px;
+	padding-left: 20px;
+	padding-right: 20px;
+	color: var(--accent-color);
+	transition: 0.4s all ease-in-out;
+	font-size: 14px;
+	border-radius: 5px;
+}
+.custom__header .custom__navbar .nav_content .navbar-nav .nav-item a:hover{
+	color: var(--accent-color);
+	background-color: rgba(19,6,56,0.2);
+}
+.custom__header .custom__navbar .nav_content.second .navbar-nav .nav-item a{
+	background: #0f9b0f;
+	background: -webkit-linear-gradient(to right, #0f9b0f, #000000);
+	background: linear-gradient(to right, #0f9b0f, #000000);
+	color: var(--aliceblue);
+	font-family: var(--josefin);
+	padding: 8px;
+	padding-bottom: 6px;
+	padding-left: 20px;
+	padding-right: 20px;
+	transition: 0.9s background ease-in-out!important;
+}
+.custom__header .custom__navbar .nav_content.second .navbar-nav .nav-item a:hover{
+	background: #0f9b0f;
+	background: -webkit-linear-gradient(to left, #0f9b0f, #000000);
+	background: linear-gradient(to left, #0f9b0f, #000000);
+}
+.custom__header .custom__navbar .nav_content.second .navbar-nav .nav-item a svg{
+	margin-top: -1px;
+	margin-right: 5px;
+}
+
+.custom__header .bottom_navbar{
+	margin-bottom: 0px;
+	padding-top: 3px;
+	padding-bottom: 2px;
+	display: flex;
+	justify-content: center;
+	pointer-events: none;
+}
+.custom__header .bottom_navbar #bottom_navbar{
+	border: 2px solid var(--main-color);
+	margin-bottom: 0px;
+	justify-content: center;
+	background-color: var(--nun-color);
+	width: auto;
+	border-radius: 10px;
+	pointer-events: fill;
+}
+.custom__header .bottom_navbar #bottom_navbar .breadcrumb-item{
+	border: none;
+	padding: 0px;
+	margin-left: 11px;
+	margin-right: 11px;
+}
+.custom__header .bottom_navbar #bottom_navbar .breadcrumb-item:nth-child(1){
+	margin-left: 0px;
+}
+.custom__header .bottom_navbar #bottom_navbar .breadcrumb-item:nth-child(5){
+	margin-right: 0px;
+}
+.custom__header .bottom_navbar #bottom_navbar .breadcrumb-item a{
+	border: none;
+	color: var(--aliceblue);
+	display: table;
+	font-family: var(--josefin);
+	padding-top: 4px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	padding-right: 11px;
+	border-radius: 10px;
+	font-size: 20px;
+	border: 2px solid var(--nun-color);
+}
+.custom__header .bottom_navbar #bottom_navbar .breadcrumb-item a.active{
+	background-color: var(--main-color);
+}
+.custom__header .bottom_navbar #bottom_navbar .breadcrumb-item a:hover{
+	background-color: var(--main-color);
+	filter: brightness(80%);
+}
+
+.trending_scroll{
+	border: none;
+}
+
+.trending_scroll a{
+	border-radius: 8px;
+	border: 3px solid var(--main-color);
+	font-family: var(--alegreya);
+	display: block;
+	width: 100%;
+	text-align: center;
+	padding: 7px;
+	margin-left: 5px;
+	margin-right: 5px;
+	background-color: var(--nun-color);
+	color: var(--aliceblue);
+	transition: 0.4s all ease-in-out;
+}
+.trending_scroll a:nth-child(1){
+	margin-left: 0px;
+}
+.trending_scroll a:nth-child(4){
+	margin-right: 0px;
+}
+.trending_scroll a.active{
+	filter: brightness(80%);
+}
+.trending_scroll a:hover{
+	filter: brightness(80%);
+}

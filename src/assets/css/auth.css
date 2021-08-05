@@ -1,0 +1,88 @@
+.auth__card{
+	border-radius: 6px;
+	padding: 40px;
+	padding-top: 30px;
+	box-shadow: none;
+	background-color: var(--nun-color);
+}
+#auth__legend{
+	font-family: var(--otomanpee);
+	font-size: 21px;
+	text-align: left;
+	color: var(--aliceblue);
+}
+.auth_group{
+}
+.auth__input{
+	border-radius: 0px;
+	border: 2px solid rgba(30,150,0,0.4)!important;
+	transition: 0.6s all ease-in-out;
+	-webkit-appearance: none !important;
+	font-family: var(--bree)!important;
+	box-shadow: none;
+	background: transparent!important;
+	color: var(--aliceblue);
+	font-size: 15px;
+}
+.auth__input:focus{
+	outline: none;
+	-webkit-appearance: none;
+	box-shadow: none;
+	color: var(--aliceblue);
+	border: 2px solid var(--accent-color)!important;
+}
+.auth__input::placeholder{
+	color: var(--aliceblue);
+}
+.auth__btn{
+	font-size: 15px;
+	padding-top: 10px;
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-bottom: 12.3px;
+	float: right;
+	border-radius: 10px;
+	transition: 0.6s all ease-in-out !important;
+	border: none!important; 
+	outline: none!important;
+	text-decoration: none !important;
+	font-weight: 400!important;
+	box-shadow: none;
+	color: var(--aliceblue);
+	text-align: center;
+	font-family: var(--bree);
+	background: #0f9b0f;
+	background: -webkit-linear-gradient(to left, #0f9b0f, #000000);
+	background: linear-gradient(to left, #0f9b0f, #000000);
+}
+
+.auth__btn:hover{
+	background: #0f9b0f;
+	background: -webkit-linear-gradient(to top, #0f9b0f, #000000);
+	background: linear-gradient(to top, #0f9b0f, #000000);
+}
+.auth__btn svg{
+	-webkit-animation: spin-animation 0.4s infinite linear;
+	animation: spin-animation 0.4s infinite linear;
+}
+.auth_redirectlink{
+	padding: 20px;
+	padding-left: 4px;
+	float: left;
+	font-family: var(--josefin);
+	font-size: 13px;
+	color: var(--aliceblue);
+}
+.auth_redirectlink a{
+	border: 1px solid var(--accent-color);
+	border-radius: 5px;
+	color: var(--accent-color);
+	padding-left: 5px;
+	padding-top: 3.2px;
+	padding-bottom: 1px;
+	padding-right: 5px;
+	font-size: 11px;
+}
+.auth_redirectlink a:hover{
+	background-color: rgba(30,150,0,0.1);
+}
