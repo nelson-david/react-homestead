@@ -45,7 +45,6 @@ const Navbar = ({activeComponent, logout, token}) => {
 				</ul>
 			</nav>
 		</nav>
-
 		<nav aria-label="breadcrumb" className="fixed-bottom bottom_navbar">
 			<ol className="breadcrumb" id="bottom_navbar">
 				<li className="breadcrumb-item">

@@ -174,7 +174,7 @@ const CommentBody = ({value, token, devApi, __id, current_user}) => {
 		<>
 		<div className="comment comment_card">
 			<div className="header">
-				<Link to={`/profile/${value.author_data._id}`}>
+				<Link to={`/user/${value.author_data.username}`}>
 					<img
 						src={AvatarImg}
 						alt="postAuthorImg"

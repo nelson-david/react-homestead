@@ -2,7 +2,6 @@ import {Link, Switch, Route} from "react-router-dom";
 import SinglePost from "../../components/sub/SinglePost";
 
 const Explore = ({posts, devURL, current_user, token, devApi}) => {
-	console.log(posts)
 	return (
 		<div className={`col-xl-5 col-lg-5 
 			col-md-7 col-sm-10 col-12`}

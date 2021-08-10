@@ -1,0 +1,268 @@
+.profile__card{
+	border-radius: 5px;
+	border-bottom-right-radius: 0px;
+	border-bottom-left-radius: 0px;
+	background-position: center center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-image: url("../../assets/img/LoginImg.jpeg");
+	box-shadow: none;
+	border: none;
+	height: auto;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.profile__card .transparent_profilediv{
+	text-align: center;
+	display: block;
+	width: 80%;
+	padding: 10px;
+	padding-top: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
+	background-color: rgba(0,0,0,0.6);
+	backdrop-filter: blur(5px);
+	border-radius: 10px;
+	text-align: center;
+	border: 2px solid rgba(0,0,0,0.1);
+}
+.profile__card .transparent_profilediv div.first{
+	border: 2px solid rgba(0,0,0,0.1);
+	border-radius: 10px;
+	display: flex;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	justify-content: center;
+}
+.profile__card .transparent_profilediv div.first img.profile_picture{
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	border: none;
+	box-shadow: 0px 3px 10px 1px rgba(15, 15, 35, 0.5);
+	object-fit: cover!important;
+	object-position: center;
+	cursor: pointer;
+	transition: 0.4s all ease-in-out;
+}
+.profile__card .transparent_profilediv div.first img.profile_picture:hover{
+	filter: brightness(70%);
+}
+.profile__card .transparent_profilediv div.first .user_details{
+	border: 2px solid rgba(0,0,0,0.1);
+	border-radius: 10px;
+	padding: 11px;
+	padding-top: 0px;
+	margin-left: 10px;
+}
+.profile__card .transparent_profilediv div.first .user_details p.username{
+	display: block;
+	padding: 15px;
+	padding-left: 10px;
+	font-family: var(--arima);
+	color: var(--aliceblue);
+	font-size: 17px;
+	margin-bottom: 0px;
+	font-weight: bold;
+	text-align: left;
+}
+.profile__card .transparent_profilediv div.first .user_details p.user_followdetails{
+	display: block;
+	padding: 0px;
+	margin-bottom: 0px;
+	display: flex;
+}
+.profile__card .transparent_profilediv div.first 
+	.user_details p.user_followdetails a{
+	display: block;
+	padding: 10px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	font-family: var(--alegreya);
+	color: lightgrey;
+	margin-left: 5px;
+	margin-right: 5px;
+	border-radius: 0px;
+	transition: 0.4s all ease-in-out;
+}
+.profile__card .transparent_profilediv div.first 
+	.user_details p.user_followdetails a:hover{
+	color: grey;
+}
+.profile__card .transparent_profilediv div.first 
+	.user_details p.user_followdetails a:nth-child(1){
+	margin-left: 0px;
+}
+.profile__card .transparent_profilediv div.first 
+	.user_details p.user_followdetails a:nth-child(3){
+	margin-right: 0px;
+}
+
+.profile__card .transparent_profilediv div.user_biography{
+	border: 2px solid rgba(0,0,0,0.1);
+	border-radius: 10px;
+	margin-top: 5px;
+	padding: 10px;
+}
+.profile__card .transparent_profilediv div.user_biography p{
+	font-family: var(--arima);
+	color: lightgrey;
+	margin-bottom: 0px;
+	display: block;
+	text-align: center;
+}
+
+.profile__card .transparent_profilediv div.user_biography div.button__div{
+	padding: 20px;
+	margin-top: 5px;
+}
+
+.profile__card .transparent_profilediv div.user_biography div.button__div a{
+	border: none;
+	margin-left: 10px;
+	margin-right: 10px;
+	font-size: 15px;
+	padding-top: 12.3px;
+	padding-left: 25px;
+	padding-right: 25px;
+	padding-bottom: 12.3px;
+	border-radius: 10px;
+	transition: 0.6s all ease-in-out !important;
+	text-decoration: none !important;
+	box-shadow: none;
+	color: var(--aliceblue);
+	text-align: center;
+	font-family: var(--alegreya);
+	background: #0f9b0f;
+	background: -webkit-linear-gradient(to left, #0f9b0f, #000000);
+	background: linear-gradient(to left, #0f9b0f, #000000);
+}
+.profile__card .transparent_profilediv div.user_biography div.button__div a:hover{
+	filter: brightness(70%);
+}
+
+.profile__nav{
+	padding: 0px;
+}
+
+.profile__nav .profile__navscroll{
+	padding-bottom: 0px;
+}
+.profile__nav .profile__navscroll ul{
+	margin-bottom: 0px;
+	display: flex;
+	justify-content: center;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	list-style: none;
+	padding: 0px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.profile__nav .profile__navscroll ul::-webkit-scrollbar{
+	display: none;
+}
+.profile__nav .profile__navscroll ul li{
+	margin-right: 10px;
+	margin-left: 10px;
+}
+.profile__nav .profile__navscroll ul li:nth-child(1){
+	margin-left: 0px;
+}
+.profile__nav .profile__navscroll ul li:last-child{
+	margin-right: 0px;
+}
+.profile__nav .profile__navscroll ul li a{
+	display: block;
+	width: 100%;
+	padding: 13px;
+	padding-top: 15px;
+	padding-left: 25px;
+	padding-right: 25px;
+	font-family: var(--alegreya);
+	font-weight: 500!important;
+	color: var(--aliceblue);
+	border-bottom: 3px solid var(--main-color);
+}
+.profile__nav .profile__navscroll ul li a.active{
+	border-bottom: 3px solid rgba(15,155,15,0.8);
+}
+.profile__nav .profile__navscroll ul li a:hover{
+	border-bottom: 3px solid rgba(15,155,15,0.8);
+	background-color: rgba(15,155,15,0.05);
+}
+.profile__nav .profile__navscroll ul li a svg{
+	margin-top: -3px;
+	margin-right: 5px;
+}
+
+.profile__bodysection{
+	margin-top: 5px;
+	padding: 0px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.profile__sidebarcard{
+	border: 1px solid var(--nun-color);
+	background-color: var(--main-color);
+	position: sticky!important;
+  	position: -webkit-sticky!important;
+  	top: 10px;
+}
+.profile__sidebarcard .header{
+	padding: 10px;
+	padding-left: 15px;
+	border-bottom: 1px solid var(--nun-color);
+}
+.profile__sidebarcard .header p{
+	color: var(--aliceblue);
+	margin-bottom: 0px;
+	font-family: var(--alegreya);
+	font-size: 19px;
+}
+.profile__sidebarcard .body{
+	padding: 15px;
+}
+.profile__sidebarcard .body ul{
+	list-style: none;
+	padding: 0px;
+}
+.profile__sidebarcard .body ul li{
+	color: lightgrey;
+	font-family: var(--arima);
+	font-size: 14px;
+	padding: 5px;
+}
+.profile__sidebarcard .body ul li svg{
+	margin-right: 5px;
+	margin-top: -1.5px;
+}
+.profile__sidebarcard .body a.edit__link{
+	border: none;
+	border-radius: 7px;
+	font-size: 17px;
+	font-family: var(--alegreya);
+	color: var(--aliceblue);
+	display: block;
+	padding-top: 11px;
+	padding-bottom: 11px;
+	padding-left: 15px;
+	padding-right: 15px;
+	background: #0f9b0f;
+	background: -webkit-linear-gradient(to left, #0f9b0f, #000000);
+	background: linear-gradient(to left, #0f9b0f, #000000);
+	text-align: center;
+	transition: 0.4s all ease-in-out;
+}
+.profile__sidebarcard .body a.edit__link:hover{
+	filter: brightness(40%);
+}
+.profile__sidebarcard .body a.edit__link svg{
+	margin-top: -3px;
+	margin-right: 3px;
+}

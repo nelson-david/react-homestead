@@ -28,7 +28,7 @@ export default function App(){
     }
 
     useEffect(() => {
-        if (token !== null){
+        if (token){
             axios({
                 method: 'GET',
                 url: `${devApi}current_user/`,
@@ -53,6 +53,18 @@ export default function App(){
             });
         }
     }, [token])
+
+    const reloadPosts = () => {
+        axios({
+            method: 'GET',
+            url: `${devApi}post/all/`,
+            headers: {
+                'Authorization': token
+            }
+        }).then((res) => {
+            setPosts(res.data.posts);
+        });   
+    }
 
     return (
         <>
@@ -103,6 +115,7 @@ export default function App(){
                                 token={token}
                                 current_user={current_user?current_user:''}
                                 posts={posts.length !== 0?posts:''}
+                                reloadPosts={reloadPosts}
                                 setCurrentComponent={
                                     () => setCurrentComponent("home")
                                 }

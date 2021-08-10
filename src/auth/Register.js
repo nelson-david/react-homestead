@@ -100,7 +100,7 @@ const Register = ({setCurrentComponent, devApi}) => {
 									</>
 								}
 							</div>
-							<p id="auth__legend">Welcome Back Mate!</p>
+							<p id="auth__legend">Welcome Back!</p>
 
 							<form id="signin_form" onSubmit={handleRegister}>
 								<div className="row">

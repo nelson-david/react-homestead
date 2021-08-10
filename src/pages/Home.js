@@ -6,15 +6,26 @@ import PostContent from "./sub/PostContent";
 import SinglePostSection from "./sub/SinglePostSection";
 import {useState, useEffect} from "react";
 import Explore from "./sub/Explore";
+import Profile from "./sub/Profile";
 
 const Home = ({setCurrentComponent, token, devApi, current_user,
-	posts, devURL}) => {
+	posts, devURL, reloadPosts}) => {
 
 	const [upload_success, setUploadSuccess] = useState(false);
 
 	useEffect(() => {
 		setCurrentComponent();
 	}, [setCurrentComponent])
+
+	const callSuccessFunction = () => {
+		setUploadSuccess(!upload_success);
+		console.log("Called Reload Posts...");
+		reloadPosts();
+	}
+
+	setInterval(function(){
+		setUploadSuccess(false);
+	}, 100);
 
 	return (
 		<div className="container-fluid custom__container">
@@ -34,7 +45,7 @@ const Home = ({setCurrentComponent, token, devApi, current_user,
 								token={token}
 								devApi={devApi}
 								current_user={current_user}
-								success={()=>setUploadSuccess(!upload_success)}
+								success={callSuccessFunction}
 							/>
 							{
 								upload_success?
@@ -61,7 +72,16 @@ const Home = ({setCurrentComponent, token, devApi, current_user,
 							<SuggestionCard />
 						</div>
 					</Route>
-					<Route exact path={`/post/:id`}>
+					<Route path={`/user/:username`}>
+						<Profile
+							devApi={devApi}
+							devURL={devURL}
+							token={token}
+							current_user={current_user}
+							posts={posts}
+						/>
+					</Route>
+					<Route path={`/p/:id`}>
 						<SinglePostSection
 							devApi={devApi}
 							devURL={devURL}

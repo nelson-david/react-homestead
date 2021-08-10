@@ -1,5 +1,9 @@
 import React from 'react';
-import { MDBCarousel, MDBCarouselInner, MDBCarouselItem, MDBView } from "mdbreact";
+import {
+  MDBCarousel,
+  MDBCarouselInner,
+  MDBCarouselItem,
+  MDBView } from "mdbreact";
 import ProgressiveImage from "react-progressive-graceful-image";
 //import * as AiIcons from "react-icons/ai";
 //import {useState} from "react";
@@ -38,7 +42,9 @@ const PostImgCarousel = (props) => {
                 }}
               >
                 <MDBView>
-                  <ProgressiveImage src="large-image.jpg" placeholder="tiny-image.jpg">
+                  <ProgressiveImage
+                    src="large-image.jpg"
+                    placeholder="tiny-image.jpg">
                     {(src) => 
                       <img
                         src={`${props.devURL}img/${value.name}`}

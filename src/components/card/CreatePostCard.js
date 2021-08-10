@@ -6,6 +6,7 @@ import ImageModal from "../sub/ImageModal";
 import ScrollContainer from 'react-indiana-drag-scroll';
 import * as ImIcons from "react-icons/im";
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 const CreatePostCard = ({token, devApi, current_user, success}) => {
 
@@ -113,14 +114,16 @@ const CreatePostCard = ({token, devApi, current_user, success}) => {
 			<div className="content">
 				<form id="add_postform" onSubmit={addPost}>
 					<div className="first">
-						<a href="/profile" id="profileDisplayImgLink">
+						<Link
+							to={`/user/${current_user.username}`}
+							id="profileDisplayImgLink">
 							<img
 								src={AvatarImg}
 								alt="displayImg"
 								loading="lazy"
 								id="profileDisplayImg"
 							/>
-						</a>
+						</Link>
 						<div className="form-group" id="add_postform_group">
 							<span
 								contentEditable="true"

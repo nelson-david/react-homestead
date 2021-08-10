@@ -9,20 +9,6 @@ const PostTextData = ({body, toggle, style}) => {
 	const extendText = (e) => {
 		e.preventDefault();
 		setShortened(!shortened);
-
-		// const state = String(shortTextRef.current.lastChild.dataset.short);
-		// if (state === "true"){
-		// 	shortTextRef.current.firstChild.innerText = 
-		// 		shortTextRef.current.lastChild.dataset.text;
-		// 	shortTextRef.current.lastChild.dataset.short = "false"
-		// 	shortTextRef.current.lastChild.innerText = " see less..."
-		// }
-		// if (state === "false"){
-		// 	shortTextRef.current.firstChild.innerText =
-		// 		shortTextRef.current.firstChild.innerText.slice(0,200)
-		// 	shortTextRef.current.lastChild.dataset.short = "true"
-		// 	shortTextRef.current.lastChild.innerText = " see more..."
-		// }
 	}
 
 	return (
@@ -49,23 +35,32 @@ const PostTextData = ({body, toggle, style}) => {
 							>
 								{
 									shortened === false?
-									<span>
-										<Interweave
-											content={body.slice(0, 200)}
-										/>
-									</span>
+									<>
+										<span>
+											<Interweave
+												content={body.slice(0, 200)}
+											/>
+										</span>
+										<a
+											data-text={`${body}`}
+											data-short="true"
+											href="/see_more"> see more...
+										</a>
+									</>
 									:
-									<span>
-										<Interweave
-											content={body}
-										/>
-									</span>
+									<>
+										<span>
+											<Interweave
+												content={body}
+											/>
+										</span>
+										<a
+											data-text={`${body}`}
+											data-short="true"
+											href="/see_more"> see less...
+										</a>
+									</>
 								}
-								<a
-									data-text={`${body}`}
-									data-short="true"
-									href="/see_more"> see more...
-								</a>
 							</p>
 							:
 							<p>

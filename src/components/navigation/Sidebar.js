@@ -10,17 +10,17 @@ const Sidebar = () => {
 	    <div className="body">
 	        <span className="header_text">Hash Tags</span>
 	        <div id="hashtags">
-	            <Link to="/explore/tag/helloworld">helloworld</Link>
-	            <Link to="/explore/tag/helloworld">coding twice</Link>
-	            <Link to="/explore/tag/helloworld">davidnelson</Link>
-	            <Link to="/explore/tag/helloworld">mobilereunion</Link>
-	            <Link to="/explore/tag/helloworld">procreate</Link>
-	            <Link to="/explore/tag/helloworld">digitalartist</Link>
-	            <Link to="/explore/tag/helloworld">python</Link>
-	            <Link to="/explore/tag/helloworld">javadevelopers</Link>
-	            <Link to="/explore/tag/helloworld">tindermeetups</Link>
-	            <Link to="/explore/tag/helloworld">whatsapp</Link>
-	            <Link to="/explore/tag/helloworld">homesteadcc</Link>
+	            <Link to="/explore/tag/helloworld">#helloworld</Link>
+	            <Link to="/explore/tag/helloworld">#coding twice</Link>
+	            <Link to="/explore/tag/helloworld">#davidnelson</Link>
+	            <Link to="/explore/tag/helloworld">#mobilereunion</Link>
+	            <Link to="/explore/tag/helloworld">#procreate</Link>
+	            <Link to="/explore/tag/helloworld">#digitalartist</Link>
+	            <Link to="/explore/tag/helloworld">#python</Link>
+	            <Link to="/explore/tag/helloworld">#javadevelopers</Link>
+	            <Link to="/explore/tag/helloworld">#tindermeetups</Link>
+	            <Link to="/explore/tag/helloworld">#whatsapp</Link>
+	            <Link to="/explore/tag/helloworld">#homesteadcc</Link>
 	        </div>
 	        <br />
 	        <span className="header_text">Trending Posts</span>

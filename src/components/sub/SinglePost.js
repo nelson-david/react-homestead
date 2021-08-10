@@ -77,6 +77,7 @@ const SinglePost = ({value, devURL, current_user, token, devApi}) => {
 					current_user={current_user}
 					token={token}
 					devApi={devApi}
+					devURL={devURL}
 				/>
 			</div>
 			<hr />

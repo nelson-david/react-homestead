@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import axios from "axios";
 import '../assets/css/auth.css';
-import LoginImg from "../assets/img/auth1.png";
+import LoginImg from "../assets/img/LoginImg.jpeg";
 import * as ImIcons from "react-icons/im";
 import * as TiIcons from "react-icons/ti";
 
@@ -47,6 +47,10 @@ const Login = ({setCurrentComponent, setToken, setUser, devApi}) => {
 				id="auth__row">
 				<div className="col-xl-5 col-lg-6 col-md-6"
 					id="auth__imgcol">
+					{/*<p>
+						Homesteading Singles is a Social Platform for 
+						People considering getting into Programming in General
+					</p>*/}
 					<img
 						src={LoginImg}
 						alt="authImg"
@@ -68,7 +72,7 @@ const Login = ({setCurrentComponent, setToken, setUser, devApi}) => {
 								:''
 							}
 						</div>
-						<p id="auth__legend">Welcome Back Mate!</p>
+						<p id="auth__legend">Welcome Back!</p>
 
 						<form id="signin_form" onSubmit={handleLogin}>
 							<div className="row">
