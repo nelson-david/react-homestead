@@ -9,7 +9,7 @@ import PostTextData from "../../components/misc/PostTextData";
 import Moment from 'react-moment';
 
 
-const SinglePost = ({value, devURL, current_user, token, devApi}) => {
+const SinglePost = ({value, devURL, current_user, token, devApi, reloadPost}) => {
 
 	const [body, setBody] = useState(null);
 	const [showMiniProfile, setShowMiniProfile] = useState(false);
@@ -78,6 +78,7 @@ const SinglePost = ({value, devURL, current_user, token, devApi}) => {
 					token={token}
 					devApi={devApi}
 					devURL={devURL}
+					reloadPost={reloadPost}
 				/>
 			</div>
 			<hr />

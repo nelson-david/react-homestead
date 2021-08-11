@@ -94,12 +94,14 @@ body{
 .add__postcard .card-header hr{
 	background-color: var(--main-color);
 	filter: brightness(120%);
+	margin-top: 5px;
 }
 .add__postcard .card-header span{
-	font-family: var(--josefin);
-	font-size: 17px;
+	font-family: var(--alegreya);
+	font-size: 21px;
 	font-weight: bold;
 	color: var(--aliceblue);
+	word-spacing: 5px;
 }
 
 .add__postcard .card-body{
@@ -143,8 +145,8 @@ body{
 	width: 100%;
 	display: block;
 	min-height: 70px;
-	font-family: var(--otomanpee);
-	font-size: 14px;
+	font-family: var(--arima);
+	font-size: 18px;
 	border-radius: 6px;
 	border: 2px solid var(--main-color);
 	outline: none;
@@ -196,7 +198,7 @@ body{
 
 button#add__post_btn{
 	font-size: 15px;
-	padding-top: 10px;
+	padding-top: 13px;
 	padding-left: 30px;
 	padding-right: 30px;
 	padding-bottom: 12.3px;
@@ -210,7 +212,7 @@ button#add__post_btn{
 	box-shadow: none;
 	color: var(--aliceblue);
 	text-align: center;
-	font-family: var(--bree);
+	font-family: var(--alegreya);
 	background: #0f9b0f;
 	background: -webkit-linear-gradient(to left, #0f9b0f, #000000);
 	background: linear-gradient(to left, #0f9b0f, #000000);

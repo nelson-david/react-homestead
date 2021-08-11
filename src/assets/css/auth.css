@@ -1,3 +1,7 @@
+#auth__row{
+	justify-content: center;
+}
+
 .auth__card{
 	border-radius: 6px;
 	padding: 40px;
@@ -6,23 +10,37 @@
 	background-color: var(--nun-color);
 }
 #auth__legend{
-	font-family: var(--otomanpee);
-	font-size: 21px;
+	font-family: var(--alegreya);
+	font-size: 30px;
 	text-align: left;
 	color: var(--aliceblue);
 }
-.auth_group{
+.auth_group button{
+	border-radius: 0px;
+	transition: 0.4s all ease-in-out;
+	border: 1px solid #0f9b0f!important; 
+	outline: none!important;
+	text-decoration: none !important;
+	box-shadow: none;
+	color: var(--aliceblue);
+	text-align: center;
+	font-family: var(--alegreya);
+	background: #0f9b0f;
+	padding-right: 10px;
+	padding-left: 9px;
 }
 .auth__input{
 	border-radius: 0px;
-	border: 2px solid rgba(30,150,0,0.4)!important;
+	border: 2px solid #0f9b0f!important;
 	transition: 0.6s all ease-in-out;
 	-webkit-appearance: none !important;
-	font-family: var(--bree)!important;
+	font-family: var(--arima)!important;
 	box-shadow: none;
 	background: transparent!important;
 	color: var(--aliceblue);
-	font-size: 15px;
+	font-size: 20px;
+	padding-top: 17px;
+	padding-bottom: 15px;
 }
 .auth__input:focus{
 	outline: none;
@@ -36,10 +54,10 @@
 }
 .auth__btn{
 	font-size: 15px;
-	padding-top: 10px;
-	padding-left: 30px;
-	padding-right: 30px;
-	padding-bottom: 12.3px;
+	padding-top: 13px;
+	padding-left: 35px;
+	padding-right: 35px;
+	padding-bottom: 12px;
 	float: right;
 	border-radius: 10px;
 	transition: 0.6s all ease-in-out !important;
@@ -50,12 +68,11 @@
 	box-shadow: none;
 	color: var(--aliceblue);
 	text-align: center;
-	font-family: var(--bree);
+	font-family: var(--alegreya);
 	background: #0f9b0f;
 	background: -webkit-linear-gradient(to left, #0f9b0f, #000000);
 	background: linear-gradient(to left, #0f9b0f, #000000);
 }
-
 .auth__btn:hover{
 	background: #0f9b0f;
 	background: -webkit-linear-gradient(to top, #0f9b0f, #000000);
@@ -85,4 +102,16 @@
 }
 .auth_redirectlink a:hover{
 	background-color: rgba(30,150,0,0.1);
+}
+
+#auth__imgcol{
+	padding-top: 5px;
+}
+#auth__imgcol p{
+	color: lightgrey;
+	font-size: 17px;
+	font-family: var(--arima);
+}
+#auth__imgcol img{
+	border-radius: 6px;
 }

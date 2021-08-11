@@ -8,7 +8,8 @@ import PostFooter from "../../components/navigation/PostFooter";
 import PostTextData from "../../components/misc/PostTextData";
 import Moment from 'react-moment';
 
-const SinglePostSection = ({devApi, devURL, token, current_user}) => {
+const SinglePostSection = ({devApi, devURL, token, current_user,
+	reloadPost}) => {
 
 	const [post, setPost] = useState({});
 	const [body, setBody] = useState(null);
@@ -97,6 +98,7 @@ const SinglePostSection = ({devApi, devURL, token, current_user}) => {
 									devApi={devApi}
 									devURL={devURL}
 									nullComment={true}
+									reloadPost={reloadPost}
 								/>
 							</div>
 						</div>

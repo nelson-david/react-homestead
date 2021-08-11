@@ -1,16 +1,22 @@
 import * as BsIcons from "react-icons/bs";
 import * as AiIcons from "react-icons/ai";
+import * as ImIcons from "react-icons/im";
 import {Link} from "react-router-dom";
 import {useRef, useState, useEffect} from "react";
 import axios from "axios";
 import Modal from 'react-modal';
 
-const PostFooter = ({post, current_user, token, _id, devApi, nullComment, devURL}) => {
+const PostFooter = ({post, current_user, token, _id, devApi,
+	nullComment, devURL, reloadPost}) => {
 
 	const likeButtonRef = useRef();
 	const [liked, setLiked] = useState(null);
+
 	const [modal, setModal] = useState(false);
-	const [copySuccess, setCopySuccess] = useState(false)
+	const [deleteModal, setDeleteModal] = useState(false);
+
+	const [copySuccess, setCopySuccess] = useState(false);
+	const [deleteSuccess, setDeleteSuccess] = useState(false);
 
 	useEffect(() => {
 		if (post.likes.length === 0){
@@ -60,6 +66,10 @@ const PostFooter = ({post, current_user, token, _id, devApi, nullComment, devURL
 		e.preventDefault();
 		setModal(!modal);
 	}
+	const toggleDeleteModal = (e) => {
+		e.preventDefault();
+		setDeleteModal(!deleteModal);
+	}
 
 	return (
 		<>
@@ -67,9 +77,22 @@ const PostFooter = ({post, current_user, token, _id, devApi, nullComment, devURL
 			modal?
 			<PostMoreModal
 				toggleModal={toggleModal}
+				toggleDeleteModal={toggleDeleteModal}
 				post={post}
 				devURL={devURL}
+				current_user={current_user}
 				setCopySuccess={setCopySuccess}
+			/>:''
+		}
+		{
+			deleteModal?
+			<DeleteModal
+				post={post}
+				toggleDeleteModal={toggleDeleteModal}
+				devApi={devApi}
+				token={token}
+				reloadPost={reloadPost}
+				setDeleteSuccess={setDeleteSuccess}
 			/>:''
 		}
 		<div className="footer">
@@ -110,11 +133,18 @@ const PostFooter = ({post, current_user, token, _id, devApi, nullComment, devURL
 				<span>Link Copied Successfully</span>
 			</div>:''
 		}
+		{
+			deleteSuccess?
+			<div className="card w-100 fixed-bottom alert__card">
+				<span>Post Successfully Deleted</span>
+			</div>:''
+		}
 		</>
 	)
 }
 
-const PostMoreModal = ({toggleModal, post, devURL, setCopySuccess}) => {
+const PostMoreModal = ({toggleModal, post, devURL, setCopySuccess,
+	current_user, toggleDeleteModal}) => {
 	Modal.setAppElement('#root');
 
 	const copyLink = (e) => {
@@ -132,6 +162,12 @@ const PostMoreModal = ({toggleModal, post, devURL, setCopySuccess}) => {
 		alert("Already Following");
 	}
 
+	const callDeletePostModal = (e) => {
+		e.preventDefault();
+		toggleModal(e);
+		toggleDeleteModal(e);
+	}
+
 	return(
 		<Modal
 			isOpen={true}
@@ -141,11 +177,40 @@ const PostMoreModal = ({toggleModal, post, devURL, setCopySuccess}) => {
 			onRequestClose={toggleModal}
 		>
 			<div className="body">
+				<p>More Post Options</p>
 				<ul>
+					{
+						post.author_data._id === current_user._id?
+						<>
+							<li>
+								<Link to="/share">
+									<AiIcons.AiOutlineShareAlt />
+									Edit Post
+								</Link>
+							</li>
+							<li>
+								<Link
+									to="/delete/post"
+									onClick={callDeletePostModal}
+								>
+									<AiIcons.AiOutlineShareAlt />
+									Delete Post
+								</Link>
+							</li>
+						</>
+						:''
+					}
 					<li>
 						<Link
 							to="/share"
-							className="active"
+						>
+							<AiIcons.AiOutlineShareAlt />
+							Save Post
+						</Link>
+					</li>
+					<li>
+						<Link
+							to="/share"
 						>
 							<AiIcons.AiOutlineShareAlt />
 							Share To
@@ -182,12 +247,68 @@ const PostMoreModal = ({toggleModal, post, devURL, setCopySuccess}) => {
 						</Link>
 					</li>
 					<li>
-						<Link to="/share">
+						<Link
+							to="/cancel"
+							onClick={toggleModal}
+						>
 							<AiIcons.AiOutlineShareAlt />
 							Cancel
 						</Link>
 					</li>
 				</ul>
+			</div>
+		</Modal>
+	)
+}
+
+const DeleteModal = ({toggleDeleteModal, post, devApi, token,
+	reloadPost, setDeleteSuccess}) => {
+
+	const [deleting, setDeleting] = useState(false);
+
+	const deletePost = (e) => {
+		setDeleting(true);
+		axios({
+			method: 'POST',
+			url: `${devApi}post/${post._id}/delete/`,
+			headers: {
+				'Authorization': token
+			}
+		}).then((res) => {
+			if (res.data.message === "success"){
+				setDeleteSuccess(true);
+				reloadPost();
+				toggleDeleteModal(e);
+				setTimeout(function(){
+					setDeleteSuccess(false);
+				}, 4000);
+			}
+		});
+	}
+
+	return (
+		<Modal
+			isOpen={true}
+			className="post_deletemodal"
+			overlayClassName="overlay post_deleteoverlay"
+			closeTimeoutMS={1000000}
+			onRequestClose={toggleDeleteModal}
+		>
+			<div className="body">
+				<p>Are You Sure You Want To Delete 
+					This Post ?</p>
+				<div className="d-flex first">
+					<button
+						onClick={toggleDeleteModal}
+					>No</button>
+					<button
+						onClick={deletePost}
+					>{
+						deleting?
+						<ImIcons.ImSpinner2 />
+						:'Yes'
+					}</button>
+				</div>
 			</div>
 		</Modal>
 	)

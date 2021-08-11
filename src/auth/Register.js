@@ -5,6 +5,7 @@ import '../assets/css/auth.css';
 import LoginImg from "../assets/img/auth1.png";
 import * as ImIcons from "react-icons/im";
 import * as TiIcons from "react-icons/ti";
+import * as BsIcons from "react-icons/bs";
 
 const Register = ({setCurrentComponent, devApi}) => {
 
@@ -17,10 +18,21 @@ const Register = ({setCurrentComponent, devApi}) => {
 	const [acctError, setAcctError] = useState(false);
 	const [ageError, setAgeError] = useState(false);
 	const [done, setDone] = useState(false);
+	const [passwordType, setPasswordType] = useState("password");
 
 	useEffect(() => {
 		setCurrentComponent();
 	}, [setCurrentComponent]);
+
+	const toggleShowPassword = (e) => {
+		e.preventDefault();
+		if (passwordType === "password"){
+			setPasswordType("text");
+		}
+		if (passwordType === "text"){
+			setPasswordType("password");
+		}
+	}
 
 	const handleRegister = (e) => {
 		e.preventDefault();
@@ -100,7 +112,7 @@ const Register = ({setCurrentComponent, devApi}) => {
 									</>
 								}
 							</div>
-							<p id="auth__legend">Welcome Back!</p>
+							<p id="auth__legend">Create An Account!</p>
 
 							<form id="signin_form" onSubmit={handleRegister}>
 								<div className="row">
@@ -142,16 +154,29 @@ const Register = ({setCurrentComponent, devApi}) => {
 										/>
 									</div>
 									<div className="col-sm-6 form-group auth_group">
-										<input
-											type="password"
-											name="auth_password"
-											placeholder="Password"
-											className="form-control auth__input"
-											id="signup_password"
-											required={true}
-											value={password}
-											onChange={(e) => setPassword(e.target.value)}
-										/>
+										<div className="d-flex">
+											<input
+												type={passwordType}
+												name="auth_password"
+												placeholder="Password"
+												className="form-control auth__input"
+												id="signup_password"
+												required={true}
+												value={password}
+												onChange={(e) => setPassword(e.target.value)}
+											/>
+											<button
+												type="button"
+												onClick={toggleShowPassword}
+											>
+												{
+													passwordType === "password"?
+													<BsIcons.BsFillEyeFill />
+													:
+													<BsIcons.BsFillEyeSlashFill />
+												}
+											</button>
+										</div>
 									</div>
 								</div>
 								<br />

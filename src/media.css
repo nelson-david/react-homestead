@@ -1,0 +1,42 @@
+@media (max-width: 991px){
+	.auth__input{
+		font-size: 16px;
+	}
+	.auth__btn{
+		padding-top: 10px;
+		padding-left: 30px;
+		padding-right: 30px;
+		padding-bottom: 9px;
+		border-radius: 6px;
+	}
+	#auth__imgcol p{
+		font-size: 15px;
+	}
+}
+
+@media (max-width: 767px){
+	#auth__imgcol{
+		display: none;
+		visibility: hidden;
+	}
+	#auth__row{
+		justify-content: flex-start;
+	}
+}
+
+@media (max-width: 425px){
+	#auth__cardcol{
+		padding: 0px;
+	}
+	.auth__card{
+		border-radius: 0px;
+		background-color: var(--main-color);
+		padding: 15px;
+		padding-top: 0px;
+		padding-bottom: 0px;
+	}
+	.custom__header .custom__navbar{
+		padding-right: 3px;
+		padding-left: 10px;
+	}
+}

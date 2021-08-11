@@ -4,6 +4,7 @@ import 'mdbootstrap/css/bootstrap.css';
 import 'mdbootstrap/css/mdb.css';
 import App from './App';
 import './index.css';
+import './media.css';
 
 ReactDOM.render(
 	<React.StrictMode>

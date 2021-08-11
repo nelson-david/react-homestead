@@ -18,14 +18,9 @@ const Home = ({setCurrentComponent, token, devApi, current_user,
 	}, [setCurrentComponent])
 
 	const callSuccessFunction = () => {
-		setUploadSuccess(!upload_success);
-		console.log("Called Reload Posts...");
-		reloadPosts();
+		setUploadSuccess(true);
+		reloadPosts(setUploadSuccess);
 	}
-
-	setInterval(function(){
-		setUploadSuccess(false);
-	}, 100);
 
 	return (
 		<div className="container-fluid custom__container">
@@ -48,7 +43,7 @@ const Home = ({setCurrentComponent, token, devApi, current_user,
 								success={callSuccessFunction}
 							/>
 							{
-								upload_success?
+								upload_success === true?
 								<>
 									<div className="success_card">
 										<p>
@@ -65,6 +60,7 @@ const Home = ({setCurrentComponent, token, devApi, current_user,
 								current_user={current_user}
 								token={token}
 								devApi={devApi}
+								reloadPost={reloadPosts}
 							/>
 						</div>
 						<div className="col-xl-4 col-lg-4"
@@ -87,6 +83,7 @@ const Home = ({setCurrentComponent, token, devApi, current_user,
 							devURL={devURL}
 							token={token}
 							current_user={current_user}
+							reloadPost={reloadPosts}
 						/>
 					</Route>
 					<Route path={`/explore`}>

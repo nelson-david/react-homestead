@@ -1,7 +1,8 @@
 //import {useState} from "react";
 import SinglePost from "../../components/sub/SinglePost";
 
-const PostContent = ({posts, devURL, current_user, token, devApi}) => {
+const PostContent = ({posts, devURL, current_user, token, devApi,
+	reloadPost}) => {
 
 	return (
 		<div className="post_container">
@@ -16,6 +17,7 @@ const PostContent = ({posts, devURL, current_user, token, devApi}) => {
 							token={token}
 							current_user={current_user}
 							devApi={devApi}
+							reloadPost={reloadPost}
 						/>
 					)
 				}):''

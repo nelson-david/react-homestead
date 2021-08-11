@@ -14,8 +14,9 @@
 	background-color: var(--nun-color);
 }
 .custom__header .custom__navbar .navbar__brand{
-	font-family: var(--zen);
+	font-family: var(--alegreya);
 	font-weight: 800!important;
+	font-size: 25px;
 	transition: 0.4s all ease-in-out;
 	color: var(--aliceblue);
 }

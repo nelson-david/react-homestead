@@ -8,10 +8,10 @@ import Navbar from "./components/navigation/Navbar";
 import Home from "./pages/Home";
 import axios from "axios";
 
-const devApi = "https://homesteadapi.herokuapp.com/api/";
-const devURL = "https://homesteadapi.herokuapp.com/";
-// const devApi = "http://localhost:7500/api/";
-// const devURL = "http://localhost:7500/";
+// const devApi = "https://homesteadapi.herokuapp.com/api/";
+// const devURL = "https://homesteadapi.herokuapp.com/";
+const devApi = "http://localhost:7500/api/";
+const devURL = "http://localhost:7500/";
 
 export default function App(){
 
@@ -22,7 +22,6 @@ export default function App(){
 
     const logout = (e) => {
         e.preventDefault();
-        console.log("Logging Out");
         removeToken();
         removeUser();
     }
@@ -54,7 +53,7 @@ export default function App(){
         }
     }, [token])
 
-    const reloadPosts = () => {
+    const reloadPosts = (setUploadSuccess) => {
         axios({
             method: 'GET',
             url: `${devApi}post/all/`,
@@ -63,6 +62,11 @@ export default function App(){
             }
         }).then((res) => {
             setPosts(res.data.posts);
+            if (setUploadSuccess){
+                setTimeout(function(){
+                    setUploadSuccess(false);
+                }, 10000);
+            }
         });   
     }
 
