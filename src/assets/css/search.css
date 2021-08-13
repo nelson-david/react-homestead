@@ -1,0 +1,196 @@
+.overlay.search_modaloverlay{
+	background-color: rgba(0, 0, 0, 0.8);
+}
+.search_modal{
+	position: fixed;
+	top: 60%;
+	left: 50%;
+	transform: translate(-50%, -60%);
+	border: none;
+	background: var(--nun-color);
+	overflow: hidden;
+	border-radius: 10px;
+	outline: none;
+	padding: 0px;
+	width: 40%;
+	height: auto;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+}
+.search_modal div.header{
+	padding: 20px;
+	border-radius: 10px;
+}
+.search__input{
+	background: var(--main-color)!important;
+	border: none!important;
+	outline: none!important;
+	-webkit-appearance: none!important;
+	box-shadow: none!important;
+	font-family: var(--arima);
+	text-transform: none;
+	color: var(--aliceblue)!important;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+	filter: brightness(70%);
+}
+#search_button{
+	border-radius: 0px;
+	transition: 0.2s all ease-in-out !important;
+	border: none!important; 
+	outline: none!important;
+	box-shadow: none;
+	color: var(--aliceblue);
+	text-align: center;
+	font-family: var(--alegreya);
+	background: var(--main-color);
+	padding-left: 15px;
+	padding-right: 15px;
+	margin-left: -1px;
+}
+#search_button:hover{
+	filter: brightness(70%);
+}
+
+.search_modal div.body{
+	padding: 20px;
+	padding-top: 0px;
+	border-radius: 10px;
+}
+.search_modal div.body ul.tabs{
+	border: none;
+	list-style: none;
+	display: flex;
+	justify-content: center;
+	padding: 10px;
+	background-color: var(--main-color);
+	border-radius: 5px;
+	margin-bottom: 10px;
+}
+
+.search_modal div.body ul.tabs li{
+	border: none;
+	margin-left: 10px;
+	margin-right: 10px;
+	border-radius: 4px;
+}
+.search_modal div.body ul.tabs li:nth-child(1){
+	margin-left: 0px;
+}
+.search_modal div.body ul.tabs li:last-child{
+	margin-right: 0px;
+}
+.search_modal div.body ul.tabs li a{
+	border: 1px solid var(--nun-color);
+	display: block;
+	font-family: var(--alegreya);
+	padding: 5px;
+	padding-left: 15px;
+	padding-right: 15px;
+	border-radius: 4px;
+	background-color: transparent;
+	color: lightgrey;
+	transition: 0.4s all ease-in-out;
+}
+.search_modal div.body ul.tabs li a.active{
+	background-color: var(--nun-color);
+}
+.search_modal div.body ul.tabs li a:hover{
+	background-color: var(--nun-color);
+}
+.search_modal div.body ul.tabs li a:focus{
+	background-color: var(--nun-color);
+}
+.search_modal div.body ul.tabs li a svg{
+	margin-right: 15px;
+}
+
+.search__posttabs{
+	border: none;
+	height: 300px;
+	overflow: hidden;
+	overflow-y: scroll;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 10px;
+}
+.search__posttabs::-webkit-scrollbar{
+}
+
+.user_searchcard{
+	border: none;
+	background-color: var(--main-color);
+	box-shadow: none;
+	padding: 10px;
+	border-radius: 20px;
+}
+.user_searchcard a.first{
+	padding: 10px;
+}
+.user_searchcard a.first img:nth-child(1){
+	width: 40px;
+	height: 40px;
+	object-fit: cover;
+	object-position: center;
+	border-radius: 50%;
+	cursor: pointer;
+	transition: 0.4s all ease-in-out;
+}
+.user_searchcard a.first img:nth-child(1):hover{
+	filter: brightness(80%);
+}
+.user_searchcard a.first div p{
+	color: lightgrey;
+	font-family: var(--arima);
+	margin-bottom: 0px;
+	display: table;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 3px;
+}
+.user_searchcard a.first div ul{
+	list-style: none;
+	padding: 0px;
+	color: grey;
+	font-family: var(--arima);
+	font-size: 13px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 25px;
+	padding-right: 25px;
+	margin-bottom: 0px;
+}
+.user_searchcard a.first div ul li{
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
+.user_searchcard a.first div ul li svg{
+	margin-right: 4px;
+}
+.user_searchcard a.first button{
+	margin-left: auto;
+	border: none!important;
+	outline: none!important;
+	border-radius: 13px;
+	font-size: 15px;
+	font-family: var(--alegreya);
+	color: var(--aliceblue);
+	display: block;
+	height: 45px!important;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 25px;
+	padding-right: 25px;
+	background: #0f9b0f;
+	background: -webkit-linear-gradient(to left, #0f9b0f, #000000);
+	background: linear-gradient(to left, #0f9b0f, #000000);
+	text-align: center;
+	transition: 0.2s all ease-in-out;
+}
+.user_searchcard a.first button:hover{
+	padding-right: 30px;
+}
+.user_searchcard a.first button svg{
+	margin-right: 4px;
+}

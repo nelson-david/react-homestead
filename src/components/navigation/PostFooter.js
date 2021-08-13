@@ -1,12 +1,16 @@
 import * as BsIcons from "react-icons/bs";
 import * as AiIcons from "react-icons/ai";
 import * as ImIcons from "react-icons/im";
+import * as RiIcons from "react-icons/ri";
+import * as VscIcons from "react-icons/vsc";
+import * as TiIcons from "react-icons/ti";
+
 import {Link} from "react-router-dom";
 import {useRef, useState, useEffect} from "react";
 import axios from "axios";
 import Modal from 'react-modal';
 
-const PostFooter = ({post, current_user, token, _id, devApi,
+const PostFooter = ({post, current_user, token, devApi,
 	nullComment, devURL, reloadPost}) => {
 
 	const likeButtonRef = useRef();
@@ -159,7 +163,6 @@ const PostMoreModal = ({toggleModal, post, devURL, setCopySuccess,
 
 	const following = (e) => {
 		e.preventDefault();
-		alert("Already Following");
 	}
 
 	const callDeletePostModal = (e) => {
@@ -184,7 +187,7 @@ const PostMoreModal = ({toggleModal, post, devURL, setCopySuccess,
 						<>
 							<li>
 								<Link to="/share">
-									<AiIcons.AiOutlineShareAlt />
+									<RiIcons.RiEditCircleLine />
 									Edit Post
 								</Link>
 							</li>
@@ -193,7 +196,7 @@ const PostMoreModal = ({toggleModal, post, devURL, setCopySuccess,
 									to="/delete/post"
 									onClick={callDeletePostModal}
 								>
-									<AiIcons.AiOutlineShareAlt />
+									<RiIcons.RiDeleteBin5Line />
 									Delete Post
 								</Link>
 							</li>
@@ -204,7 +207,7 @@ const PostMoreModal = ({toggleModal, post, devURL, setCopySuccess,
 						<Link
 							to="/share"
 						>
-							<AiIcons.AiOutlineShareAlt />
+							<BsIcons.BsBookmark />
 							Save Post
 						</Link>
 					</li>
@@ -218,7 +221,7 @@ const PostMoreModal = ({toggleModal, post, devURL, setCopySuccess,
 					</li>
 					<li>
 						<Link to="/share">
-							<AiIcons.AiOutlineShareAlt />
+							<VscIcons.VscReport />
 							Report Post
 						</Link>
 					</li>
@@ -236,13 +239,13 @@ const PostMoreModal = ({toggleModal, post, devURL, setCopySuccess,
 							to="/copy/link"
 							onClick={copyLink}
 						>
-							<AiIcons.AiOutlineShareAlt />
+							<RiIcons.RiFileCopyLine />
 							Copy Link
 						</Link>
 					</li>
 					<li>
 						<Link to="/share">
-							<AiIcons.AiOutlineShareAlt />
+							<BsIcons.BsCodeSlash />
 							Embed
 						</Link>
 					</li>
@@ -251,7 +254,7 @@ const PostMoreModal = ({toggleModal, post, devURL, setCopySuccess,
 							to="/cancel"
 							onClick={toggleModal}
 						>
-							<AiIcons.AiOutlineShareAlt />
+							<TiIcons.TiCancelOutline />
 							Cancel
 						</Link>
 					</li>

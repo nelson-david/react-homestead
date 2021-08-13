@@ -6,7 +6,10 @@ import PostImgCarousel from "../../components/sub/PostImgCarousel";
 import CommentCard from "../../components/card/CommentCard";
 import PostFooter from "../../components/navigation/PostFooter";
 import PostTextData from "../../components/misc/PostTextData";
+import NotFoundDiv from "../../components/misc/NotFoundDiv";
+import LoadingDiv from "../../components/misc/LoadingDiv";
 import Moment from 'react-moment';
+import * as AiIcons from "react-icons/ai";
 
 const SinglePostSection = ({devApi, devURL, token, current_user,
 	reloadPost}) => {
@@ -14,6 +17,7 @@ const SinglePostSection = ({devApi, devURL, token, current_user,
 	const [post, setPost] = useState({});
 	const [body, setBody] = useState(null);
 	const [notFound, setNotFound] = useState(false);
+	const [loading, setLoading] = useState(true);
 	const _id = window.location.pathname.split("/")[2];
 
 	useEffect(() => {
@@ -24,7 +28,6 @@ const SinglePostSection = ({devApi, devURL, token, current_user,
 				'Authorization': token
 			}
 		}).then((res) => {
-			console.log(res.data)
 			if (res.data.message !== false){
 				setPost(res.data.post);
 				var __data = res.data.post.body;
@@ -36,19 +39,34 @@ const SinglePostSection = ({devApi, devURL, token, current_user,
 			}else{
 				setNotFound(true)
 			}
+			setLoading(false);
 		});
 	}, [devApi, token, _id]);
 
 	return (
 		<>
 			{
-				Object.keys(post).length === 0?
-				<h1>Loading</h1>
+				loading?
+				<div className={`col-xl-5 col-lg-5 
+					col-md-7 col-sm-10 col-12`}
+					id="content_col">
+					<LoadingDiv />
+				</div>
 				:
 				<>
 				{
 					notFound === true?
-					<h1>Not Found</h1>
+					<NotFoundDiv
+						text="This Page is Not Available, Post Was Deleted"
+						style={{
+							color: "lightgrey",
+							fontFamily: "var(--arima)",
+							fontSize: "23px",
+							paddingLeft: "20px",
+							paddingRight: "20px",
+							paddingTop: "10px"
+						}}
+					/>
 					:
 					<>
 						<div className={`col-xl-5 col-lg-5 
@@ -63,6 +81,12 @@ const SinglePostSection = ({devApi, devURL, token, current_user,
 										/>
 										<span className="username">
 											@{post.author_data.username}
+											{
+												post.author_data.verified === true?
+												<AiIcons.AiFillCheckCircle
+													className="verified"
+												/>:''
+											}
 										</span>
 									</Link>
 									<i id="upload_time">

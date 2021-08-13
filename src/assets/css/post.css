@@ -34,6 +34,12 @@
 	width: 100%;
 	display: block;
 }
+.post_card .header a span.username svg{
+	color: green;
+	font-size: 12px;
+	margin-top: -2px;
+	margin-left: 3px;
+}
 .post_card .header i{
 	font-family: var(--signika-negative);
 	font-style: normal;
@@ -59,7 +65,7 @@
 	background-color: rgba(255,255,255,0.01);
 }
 
-.carousel_expandcard{
+/*.carousel_expandcard{
 	border-radius: 5px;
 	border-bottom-left-radius: 0px;
 	border-bottom-right-radius: 0px;
@@ -81,7 +87,7 @@
 }
 .carousel_expandcard p svg{
 	cursor: pointer;
-}
+}*/
 .post_carouselimg{
 	width: 100%;
 	object-fit: cover;

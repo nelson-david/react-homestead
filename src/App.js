@@ -17,7 +17,7 @@ export default function App(){
 
     const { token, removeToken, setToken, removeUser, setUser } = AuthToken();
     const [currentComponent, setCurrentComponent] = useState("home");
-    const [current_user, setCurrentUser] = useState({});
+    const [current_user, setCurrentUser] = useState(null);
     const [posts, setPosts] = useState([]);
 
     const logout = (e) => {
@@ -73,11 +73,15 @@ export default function App(){
     return (
         <>
             <Router>
-            		<Navbar
-            			logout={logout}
-            			activeComponent={currentComponent}
-                        token={token}
-            		/>
+                <Navbar
+                    logout={logout}
+                    activeComponent={currentComponent}
+                    token={token}
+                    devApi={devApi}
+                    devURL={devURL}
+                    current_user={current_user !== null?current_user:''}
+                    reloadPosts={reloadPosts}
+                />
                 <Switch>
                     <Route exact path="/login">
                         {
@@ -117,7 +121,7 @@ export default function App(){
                                 devApi={devApi}
                                 devURL={devURL}
                                 token={token}
-                                current_user={current_user?current_user:''}
+                                current_user={current_user !== null?current_user:''}
                                 posts={posts.length !== 0?posts:''}
                                 reloadPosts={reloadPosts}
                                 setCurrentComponent={

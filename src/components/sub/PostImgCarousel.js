@@ -7,13 +7,11 @@ import {
 import ProgressiveImage from "react-progressive-graceful-image";
 //import * as AiIcons from "react-icons/ai";
 //import {useState} from "react";
-import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
 const PostImgCarousel = (props) => {
-  const handle = useFullScreenHandle();
 
   return (
-    <FullScreen handle={handle}>
+    <>
       <MDBCarousel
         activeItem={1}
         length={props.imageData.length}
@@ -24,7 +22,8 @@ const PostImgCarousel = (props) => {
         style={{
           borderRadius: "6px",
           marginTop:"10px",
-          alignItems:"center"
+          alignItems:"center",
+          zIndex: "0"
         }}
       >
         <MDBCarouselInner
@@ -60,7 +59,7 @@ const PostImgCarousel = (props) => {
           })}
         </MDBCarouselInner>
       </MDBCarousel>
-    </FullScreen>
+    </>
   )
 }
 

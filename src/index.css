@@ -417,3 +417,74 @@ button#add__post_btn:disabled{
     -webkit-animation: spin-animation 0.6s infinite linear;
     animation: spin-animation 0.6s infinite linear;
 }
+
+#notfound__div{
+    border: none;
+}
+#notfound__div p{
+	margin: 0px!important;
+	display: block;
+	padding: 10px;
+	width: 100%;
+	text-align: center;
+}
+
+.overlay.logout_modaloverlay{
+	background-color: rgba(0, 0, 0, 0.5);
+}
+.logout_modal{
+	position: fixed;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%, -60%);
+	border: 2px solid var(--main-color);
+	background: var(--nun-color);
+	overflow: hidden;
+	border-radius: 10px;
+	outline: none;
+	padding: 0px;
+	width: 27%;
+	height: auto;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+}
+.logout_modal div.body{
+	padding: 20px;
+	border-radius: 10px;
+}
+
+.logout_modal div.body p:nth-child(1){
+	border: none;
+	background-color: var(--main-color);
+	display: block;
+	color: var(--white);
+	border-radius: 6px;
+	font-family: var(--alegreya);
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.logout_modal div.body div.first button{
+	font-size: 15px;
+	padding-top: 10px;
+	padding-left: 35px;
+	padding-right: 35px;
+	padding-bottom: 5px;
+	border-radius: 8px;
+	transition: 0.3s all ease-in-out !important;
+	border: none!important; 
+	outline: none!important;
+	box-shadow: none;
+	color: var(--aliceblue);
+	text-align: center;
+	font-family: var(--arima);
+	background: blue;
+}
+.logout_modal div.body div.first button:last-child{
+	margin-left: auto;
+	background: red;
+}
+.logout_modal div.body div.first button:hover{
+	filter: brightness(60%);
+}

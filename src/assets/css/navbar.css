@@ -85,6 +85,20 @@
 	margin-right: 5px;
 }
 
+#search__icon a{
+	background: var(--main-color);
+	transition: 0.3s all ease-in-out!important;
+	transition-duration: 0.3s!important;
+	padding-left: 14px;
+	padding-right: 10px;
+}
+#search__icon a:hover{
+	filter: brightness(70%);
+}
+
+
+/* Bottom Navbar Styles Section */
+
 .custom__header .bottom_navbar{
 	margin-bottom: 0px;
 	padding-top: 3px;

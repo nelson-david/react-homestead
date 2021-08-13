@@ -7,6 +7,7 @@ import {useState, useEffect} from "react";
 import PostFooter from "../../components/navigation/PostFooter";
 import PostTextData from "../../components/misc/PostTextData";
 import Moment from 'react-moment';
+import * as AiIcons from "react-icons/ai";
 
 
 const SinglePost = ({value, devURL, current_user, token, devApi, reloadPost}) => {
@@ -40,6 +41,12 @@ const SinglePost = ({value, devURL, current_user, token, devApi, reloadPost}) =>
 						/>
 						<span className="username">
 							@{value.author_data.username}
+							{
+								value.author_data.verified === true?
+								<AiIcons.AiFillCheckCircle
+									className="verified"
+								/>:''
+							}
 						</span>
 					</Link>
 					{
