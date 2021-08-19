@@ -1,11 +1,8 @@
 .profile__card{
 	border-radius: 5px;
-	border-bottom-right-radius: 0px;
-	border-bottom-left-radius: 0px;
 	background-position: center center;
 	background-size: cover;
 	background-repeat: no-repeat;
-	background-image: url("../../assets/img/LoginImg.jpeg");
 	box-shadow: none;
 	border: none;
 	height: auto;

@@ -272,7 +272,7 @@ const DeleteModal = ({toggleDeleteModal, post, devApi, token,
 	const deletePost = (e) => {
 		setDeleting(true);
 		axios({
-			method: 'POST',
+			method: 'DELETE',
 			url: `${devApi}post/${post._id}/delete/`,
 			headers: {
 				'Authorization': token

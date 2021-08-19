@@ -7,6 +7,7 @@ import SinglePostSection from "./sub/SinglePostSection";
 import {useState, useEffect} from "react";
 import Explore from "./sub/Explore";
 import Profile from "./sub/Profile";
+import EditProfile from './sub/EditProfile';
 
 const Home = ({setCurrentComponent, token, devApi, current_user,
 	posts, devURL, reloadPosts}) => {
@@ -88,6 +89,15 @@ const Home = ({setCurrentComponent, token, devApi, current_user,
 					</Route>
 					<Route path={`/explore`}>
 						<Explore
+							devApi={devApi}
+							devURL={devURL}
+							token={token}
+							current_user={current_user}
+							posts={posts}
+						/>
+					</Route>
+					<Route path={`/settings`}>
+						<EditProfile
 							devApi={devApi}
 							devURL={devURL}
 							token={token}

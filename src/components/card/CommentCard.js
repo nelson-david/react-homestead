@@ -26,7 +26,9 @@ const CommentCard = ({token, devApi, __id, current_user}) => {
 				'Authorization': token
 			}
 		}).then((res) => {
-			setComments(res.data.comments);
+			if (res.status === 200) {
+				setComments(res.data.comments);
+			}
 			setLoading(false);
 		});
 		if (commentDivRef) {
@@ -50,7 +52,7 @@ const CommentCard = ({token, devApi, __id, current_user}) => {
 			}
 		}).then((res) => {
 			commentInputRef.current.innerText = "";
-			if (res.data.message === "success"){
+			if (res.status === 200){
 				setComments(res.data.comments);
 				setAddingComment(false);
 			}
@@ -144,7 +146,7 @@ const CommentBody = ({value, token, devApi, __id, current_user}) => {
 			setLikedComment(true);
 			value.likes.map((check, index) => {
 				if (check.liker_data._id === current_user._id){
-
+					setLikedComment(true);
 				}
 				return "Done";
 			})
@@ -163,7 +165,7 @@ const CommentBody = ({value, token, devApi, __id, current_user}) => {
 					'Authorization': token
 				}
 			}).then((res) => {
-				if (res.data.message === "success"){
+				if (res.status === 200){
 					setLikedComment(true);
 				}
 			});

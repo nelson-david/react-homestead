@@ -74,7 +74,7 @@ const SinglePostSection = ({devApi, devURL, token, current_user,
 							id="content_col">
 							<div className="card post_card">
 								<div className="header">
-									<Link to={`/profile/${post.author_data._id}/`}>
+									<Link to={`/user/${post.author_data.username}/`}>
 										<img
 											src={AvatarImg}
 											alt="postAuthorImg"

@@ -5,14 +5,24 @@ import * as BiIcons from "react-icons/bi";
 import {Link} from "react-router-dom";
 import CoverPhoto from "../../assets/img/main1.jpg";
 
-const ProfileCard = ({current_user, user}) => {
+const ProfileCard = ({current_user, user, devURL}) => {
 	return(
 		<>
-			<div className="card profile__card">
+			<div
+				className="card profile__card"
+				style={{
+					backgroundImage: `url(${current_user.cover_photo==="cover_default.webp"?
+						CoverPhoto : `${devURL}img/cover_photo/
+						${current_user.cover_photo}`})`
+				}}
+			>
 				<div className="transparent_profilediv">
 					<div className="first">
 						<img
-							src={CoverPhoto}
+							src={current_user.profile_picture!=="default.webp"?
+								`${devURL}img/profile_photo/
+								${current_user.profile_picture}`:
+								CoverPhoto}
 							alt="profile_picture"
 							className="profile_picture"
 						/>
@@ -39,11 +49,8 @@ const ProfileCard = ({current_user, user}) => {
 						</div>
 					</div>
 					<div className="user_biography">
-						<p>
-							Apex Legends Top Gamer For 2021💓 | Frontend
-							Web Designer💻 & Content Creator🗒 |
-							Proud Taurus♉
-						</p>
+						<p>{current_user.bio!==undefined || current_user.bio !== ''?
+							current_user.bio:''}</p>
 						<div className="button__div">
 							{
 								current_user.username !== user.username?
@@ -63,7 +70,7 @@ const ProfileCard = ({current_user, user}) => {
 								</>
 								:
 								<>
-									<Link to="/user/nelson__david2">
+									<Link to="/settings">
 										Edit Profile
 									</Link>
 									<Link

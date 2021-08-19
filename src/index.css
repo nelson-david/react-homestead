@@ -216,6 +216,7 @@ button#add__post_btn{
 	background: #0f9b0f;
 	background: -webkit-linear-gradient(to left, #0f9b0f, #000000);
 	background: linear-gradient(to left, #0f9b0f, #000000);
+	-webkit-user-select: none;
 }
 button#add__post_btn:hover{
 	background: #0f9b0f;
@@ -230,7 +231,7 @@ button#add__post_btn:focus{
 	outline: none;
 }
 button#add__post_btn:disabled{
-	background: rgba(47, 128, 237, 0.47);
+	background: rgba(15, 155, 15, 0.2);
 	cursor: not-allowed;
 	box-shadow: none;
 }

@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useState, useEffect, useRef} from "react";
 import * as RiIcons from "react-icons/ri";
 import AvatarImg from "../../assets/img/main2.jpg";
 import SelectedImage from "../sub/SelectedImage";
@@ -16,7 +16,26 @@ const CreatePostCard = ({token, devApi, current_user, success}) => {
 	const [newFileObj, setNewFileObj] = useState([]);
 	const [showSingleImage, setShowSingleImage] = useState("");
 	const [startIndex, setStartIndex] = useState(0);
-	const [buttonState, setButtonState] = useState(false);
+	const [buttonState, setButtonState] = useState();
+	const [textData, setTextData] = useState("");
+	const postTextRef = useRef();
+
+	useEffect(() => {
+		if (postTextRef) {
+			postTextRef.current.addEventListener('input', () => {
+				setTextData(postTextRef.current.innerText)
+			});
+		}
+	}, [])
+
+	setTimeout(() => {
+		// console.log(imageURL.length);
+		if (textData === "" || textData.length < 2){
+			setButtonState(true);
+		}else{
+			setButtonState(false);
+		}
+	}, 1);
 
 	setTimeout(() => {
 		if (imageURL.length === 0){
@@ -32,6 +51,7 @@ const CreatePostCard = ({token, devApi, current_user, success}) => {
 	}
 	const handleFileChange = (e) => {
 		fileObj.push(e.target.files);
+		console.log(e.target.files);
 		setNewFileObj(e.target.files);
 		for (let i = 0; i < fileObj[0].length; i++) {
 			fileArray.push(URL.createObjectURL(fileObj[0][i]));
@@ -61,14 +81,12 @@ const CreatePostCard = ({token, devApi, current_user, success}) => {
 		setButtonState(true);
 		setProccess(true);
 
-		const __data = document.getElementById("post_textdata").innerText;
-
 		var form_data = new FormData();
-		form_data.append("body", __data);
+		form_data.append("body", textData);
 		var totalfiles = newFileObj.length;
+		
 		for (var index = 0; index < totalfiles; index++) {
 			form_data.append("files", newFileObj[index]);
-			console.log("appended");
 		}
 
 		axios({
@@ -85,6 +103,8 @@ const CreatePostCard = ({token, devApi, current_user, success}) => {
 			setProccess(false);
 			if (res.data.message === "success"){
 				setButtonState(false);
+				setImageURL([]);
+				setTextData("");
 				document.getElementById("post_textdata").innerText = "";
 				setImageSelectedState(false);
 				setNewFileObj([]);
@@ -129,6 +149,7 @@ const CreatePostCard = ({token, devApi, current_user, success}) => {
 								contentEditable="true"
 								data-placeholder={`@${current_user.username}, 
 									You Got An Update`}
+								ref={postTextRef}
 								id="post_textdata"></span>
 						</div>
 					</div>
