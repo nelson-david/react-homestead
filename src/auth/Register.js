@@ -56,12 +56,12 @@ const Register = ({setCurrentComponent, devApi}) => {
 				setEmail("");
 				setDob("");
 				setProccess(false);
-				console.log(res.data);
-				if (res.data.message === false){
-					setAcctError(true);
-				}
-				if (res.data.message === true){
+				if (res.status === 200){
 					setDone(true)
+				}else{
+					if (res.status === 400) {
+						setAcctError(true);
+					}
 				}
 			});
 		}

@@ -13,6 +13,7 @@ const SearchModal = ({toggleSearchModal, token, devApi, devURL,
 	current_user, reloadPost}) => {
 
 	const [searchText, setSearchText] = useState("");
+	const [notFound, setNotFound] = useState(false);
 	const [tabs, setTabs] = useState("post");
 
 	const [posts, setPosts] = useState(null);
@@ -30,8 +31,17 @@ const SearchModal = ({toggleSearchModal, token, devApi, devURL,
 					'Authorization': token
 				}
 			}).then((res) => {
-				setPosts(res.data.post_data);
-				setUsers(res.data.user_data);
+				console.log(res.data);
+				if (res.status === 200){
+					if (res.data.post_data.length === 0 && 
+						res.data.user_data.length === 0) {
+						setNotFound(true);
+					} else {
+						setNotFound(false)
+						setPosts(res.data.post_data);
+						setUsers(res.data.user_data);
+					}
+				}
 			});
 		}
 	}
@@ -121,6 +131,7 @@ const SearchModal = ({toggleSearchModal, token, devApi, devURL,
 						devApi={devApi}
 						reloadPost={reloadPost}
 						toggleSearchModal={toggleSearchModal}
+						notFound={notFound}
 					/>:''
 				}
 				{
@@ -133,6 +144,7 @@ const SearchModal = ({toggleSearchModal, token, devApi, devURL,
 						devApi={devApi}
 						reloadPost={reloadPost}
 						toggleSearchModal={toggleSearchModal}
+						notFound={notFound}
 					/>:''
 				}
 
@@ -143,53 +155,67 @@ const SearchModal = ({toggleSearchModal, token, devApi, devURL,
 }
 
 const PostsTab = ({posts, token, devApi, devURL,
-	current_user, reloadPost, toggleSearchModal}) => {
+	current_user, reloadPost, toggleSearchModal, notFound}) => {
 	return (
 		<div className="search__posttabs">
 			{
-				posts !== null?
+				notFound?
+				<h3>Your Search Did Not Return Any Result</h3>
+				:
 				<>
-					{
-						posts.map((value, index) => {
-							return (
-								<SinglePost
-									key={index}
-									value={value}
-									devURL={devURL}
-									token={token}
-									current_user={current_user}
-									devApi={devApi}
-									reloadPost={reloadPost}
-								/>
-							)
-						})
-					}
-				</>:''
+				{
+					posts !== null?
+					<>
+						{
+							posts.map((value, index) => {
+								return (
+									<SinglePost
+										key={index}
+										value={value}
+										devURL={devURL}
+										token={token}
+										current_user={current_user}
+										devApi={devApi}
+										reloadPost={reloadPost}
+									/>
+								)
+							})
+						}
+					</>:''
+				}
+				</>
 			}
 		</div>
 	)
 }
 
 const UsersTab = ({users, token, devApi, devURL,
-	current_user, reloadPost, toggleSearchModal}) => {
+	current_user, reloadPost, toggleSearchModal, notFound}) => {
 	return (
 		<div className="search__posttabs">
 			{
-				users !== null?
+				notFound?
+				<h3>Your Search Did Not Return Any Result</h3>
+				:
 				<>
-					{
-						users.map((value, index) => {
-							return (
-								<UserSearchCard
-									key={index}
-									current_user={current_user}
-									user={value}
-									toggleSearchModal={toggleSearchModal}
-								/>
-							)
-						})
-					}
-				</>:''
+				{
+					users !== null?
+					<>
+						{
+							users.map((value, index) => {
+								return (
+									<UserSearchCard
+										key={index}
+										current_user={current_user}
+										user={value}
+										toggleSearchModal={toggleSearchModal}
+									/>
+								)
+							})
+						}
+					</>:''
+				}
+				</>
 			}
 		</div>
 	)

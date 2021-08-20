@@ -11,7 +11,7 @@ const Sidebar = () => {
 	        <span className="header_text">Hash Tags</span>
 	        <div id="hashtags">
 	            <Link to="/explore/tag/helloworld">#helloworld</Link>
-	            <Link to="/explore/tag/helloworld">#coding twice</Link>
+	            <Link to="/explore/tag/helloworld">#codingtwice</Link>
 	            <Link to="/explore/tag/helloworld">#davidnelson</Link>
 	            <Link to="/explore/tag/helloworld">#mobilereunion</Link>
 	            <Link to="/explore/tag/helloworld">#procreate</Link>
