@@ -95,10 +95,14 @@ const MainRoute = ({current_user, devApi, token, devURL}) => {
 			setGender(current_user.gender);
 			setBio(current_user.bio);
 			setProfileImg({
-				file: `${devURL}img/profile_photo/${current_user.profile_picture}`
+				file: `${current_user.profile_picture==="default.webp" ?
+					'https://images.alphacoders.com/781/78163.jpg'
+					:`${devURL}img/profile_photo/${current_user.profile_picture}`}`
 			})
 			setCoverImg({
-				file: `${devURL}img/cover_photo/${current_user.cover_photo}`
+				file: `${current_user.cover_photo==="cover_default.webp" ?
+					'https://images.alphacoders.com/781/78163.jpg'
+					:`${devURL}img/cover_photo/${current_user.cover_photo}`}`
 			})
 		}
 	}, [current_user, devURL])
@@ -159,9 +163,7 @@ const MainRoute = ({current_user, devApi, token, devURL}) => {
 					>
 						<img
 							alt="coverphoto"
-							src={current_user.cover_photo!=="cover_default.webp"?`
-								${coverImg.file}`:
-								'https://images.alphacoders.com/781/78163.jpg'}
+							src={coverImg.file}
 							className="editprofile__coverphoto"
 						/>
 					</label>
@@ -181,9 +183,7 @@ const MainRoute = ({current_user, devApi, token, devURL}) => {
 					>
 						<img
 							alt="coverphoto"
-							src={current_user.profile_picture!=="default.webp"?`
-								${profileImg.file}`:
-								'https://images.alphacoders.com/781/78163.jpg'}
+							src={profileImg.file}
 							className="editprofile__profilephoto"
 						/>
 					</label>

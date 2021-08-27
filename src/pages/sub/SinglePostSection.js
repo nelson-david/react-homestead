@@ -12,7 +12,7 @@ import Moment from 'react-moment';
 import * as AiIcons from "react-icons/ai";
 
 const SinglePostSection = ({devApi, devURL, token, current_user,
-	reloadPost}) => {
+	reloadPost, setCurrentComponent}) => {
 
 	const [post, setPost] = useState({});
 	const [body, setBody] = useState(null);
@@ -21,6 +21,8 @@ const SinglePostSection = ({devApi, devURL, token, current_user,
 	const _id = window.location.pathname.split("/")[2];
 
 	useEffect(() => {
+		setCurrentComponent("single_post");
+		
 		axios({
 			method: 'GET',
 			url: `${devApi}post/${_id}/get/`,
@@ -41,7 +43,7 @@ const SinglePostSection = ({devApi, devURL, token, current_user,
 			}
 			setLoading(false);
 		});
-	}, [devApi, token, _id]);
+	}, [devApi, token, _id, setCurrentComponent]);
 
 	return (
 		<>
@@ -70,9 +72,9 @@ const SinglePostSection = ({devApi, devURL, token, current_user,
 					:
 					<>
 						<div className={`col-xl-5 col-lg-5 
-							col-md-7 col-sm-10 col-12`}
+							col-md-7 col-sm-7 col-12`}
 							id="content_col">
-							<div className="card post_card">
+							<div className="card post_card" id="singlepost_card">
 								<div className="header">
 									<Link to={`/user/${post.author_data.username}/`}>
 										<img

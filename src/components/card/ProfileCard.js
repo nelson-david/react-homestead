@@ -2,18 +2,82 @@ import * as CgIcons from "react-icons/cg";
 import * as AiIcons from "react-icons/ai";
 import * as VscIcons from "react-icons/vsc";
 import * as BiIcons from "react-icons/bi";
+import * as ImIcons from "react-icons/im";
+import * as TiIcons from "react-icons/ti";
 import {Link} from "react-router-dom";
 import CoverPhoto from "../../assets/img/main1.jpg";
+import axios from "axios";
+import {useState, useEffect} from "react";
+import Modal from "react-modal";
 
-const ProfileCard = ({current_user, user, devURL}) => {
+const ProfileCard = ({current_user, user, devURL, token, devApi}) => {
+
+	const [following, setFollowing] = useState(null);
+	const [action, setAction] = useState(false);
+	const [photoModal, setPhotoModal] = useState(false);
+
+	useEffect(() => {
+		const check_stats = user.followers.find(user => user.username === current_user.username);
+		if (check_stats !== undefined){
+			setFollowing(true);
+		}else{
+			setFollowing(false);
+		}
+	}, [user, current_user])
+
+	const follow_user = (e) => {
+		e.preventDefault();
+		setAction(true);
+
+		if (following === true){
+			console.log("unfollowing");
+			setFollowing(false);
+			// axios({
+			// 	method: 'PUT',
+			// 	url: `${devApi}user/${user.username}/unfollow/`,
+			// 	headers: {
+			// 		'Authorization': token
+			// 	}
+			// }).then((res) => {
+			// 	console.log(res);
+			// 	setFollowing(false)
+			// });
+		}else{
+			console.log("following");
+			axios({
+				method: 'PUT',
+				url: `${devApi}user/${user.username}/follow/`,
+				headers: {
+					'Authorization': token
+				}
+			}).then((res) => {
+				console.log(res);
+				setFollowing(true)
+			});
+		}
+		console.log("Done");
+		setAction(false);
+	}
+
+	const togglePhotoModal = (e) => {
+		setPhotoModal(!photoModal);
+	}
+
 	return(
 		<>
+			{
+				photoModal?
+				<PhotoModal
+					devURL={devURL}
+					current_user={current_user}
+					togglePhotoModal={togglePhotoModal}
+				/>:''
+			}
 			<div
 				className="card profile__card"
 				style={{
 					backgroundImage: `url(${current_user.cover_photo==="cover_default.webp"?
-						CoverPhoto : `${devURL}img/cover_photo/
-						${current_user.cover_photo}`})`
+						CoverPhoto : `${devURL}img/cover_photo/${current_user.cover_photo}`})`
 				}}
 			>
 				<div className="transparent_profilediv">
@@ -25,6 +89,7 @@ const ProfileCard = ({current_user, user, devURL}) => {
 								CoverPhoto}
 							alt="profile_picture"
 							className="profile_picture"
+							onClick={togglePhotoModal}
 						/>
 						<div className="user_details">
 							<p
@@ -55,12 +120,29 @@ const ProfileCard = ({current_user, user, devURL}) => {
 							{
 								current_user.username !== user.username?
 								<>
-									<Link
-										to="/user/nelson__david2"
-										onClick={(e) => e.preventDefault()}
-									>
-										Follow
-									</Link>
+									{
+										following !== null?
+										<Link
+											to="/user/nelson__david2"
+											onClick={follow_user}
+											id="first"
+										>
+											{
+												action?
+												<ImIcons.ImSpinner2 />
+												:
+												<>
+												{
+													following === true?
+													'Unfollow'
+													:'Follow'
+												}
+												</>
+											}
+										</Link>
+										:''
+									}
+
 									<Link
 										to="/profile/more"
 										onClick={(e) => e.preventDefault()}
@@ -136,6 +218,80 @@ const ProfileNavigation = ({user}) => {
 				</ul>
 			</div>
 		</div>
+	)
+}
+
+const PhotoModal = ({ devURL, current_user, togglePhotoModal}) => {
+	Modal.setAppElement('#root');
+
+	const [currentDiv, setCurrentDiv] = useState("profile");
+
+	const switchDiv = (e) => {
+		setCurrentDiv(e.target.dataset.component);
+	}
+
+	return (
+		<Modal
+			isOpen={true}
+			className="photo__modal"
+			overlayClassName="overlay photo__modaloverlay"
+			style={{
+				zIndex: "1000"
+			}}
+		>
+			<div className="body">
+				<TiIcons.TiTimes
+					id="close_modal"
+					onClick={togglePhotoModal}
+				/>
+				<div className="switch_tab" id={currentDiv}>
+					<span
+						data-component="profile"
+						onClick={switchDiv}
+					>Profile Picture</span>
+					<span
+						data-component="background"
+						onClick={switchDiv}
+					>Background Picture</span>
+				</div>
+				<br />
+				<div className="content">
+					{
+						currentDiv === "profile"?
+						<>
+							<div className="first">
+								<img
+									src={current_user.profile_picture !== "default.webp" ?
+										`${devURL}img/profile_photo/
+											${current_user.profile_picture}` :
+										CoverPhoto}
+									alt="display_picture"
+									id="profile_picture"
+								/>
+							</div>
+							<input
+								type="file"
+							/>
+						</>
+						:
+						<>
+							<div className="first">
+								<img
+									src={current_user.cover_photo==="cover_default.webp"?
+											CoverPhoto : `${devURL}img/cover_photo/
+											${current_user.cover_photo}`}
+									alt="display_picture"
+									id="background_picture"
+								/>
+							</div>
+							<input
+								type="file"
+							/>
+						</>
+					}
+				</div>
+			</div>
+		</Modal>
 	)
 }
 

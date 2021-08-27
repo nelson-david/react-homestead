@@ -52,6 +52,8 @@ const Profile = ({posts, devURL, current_user, token, devApi}) => {
 								current_user={current_user}
 								user={user}
 								devURL={devURL}
+								devApi={devApi}
+								token={token}
 							/>
 
 							<Switch>

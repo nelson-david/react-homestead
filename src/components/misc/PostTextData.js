@@ -7,7 +7,7 @@ const PostTextData = ({body, toggle, style}) => {
 	const [shortened, setShortened] = useState(false);
 
 	const extendText = (e) => {
-		e.preventDefault();
+		//e.preventDefault();
 		setShortened(!shortened);
 	}
 
@@ -41,11 +41,10 @@ const PostTextData = ({body, toggle, style}) => {
 												content={body.slice(0, 200)}
 											/>
 										</span>
-										<a
-											data-text={`${body}`}
-											data-short="true"
+										<i
+											id="expand_text"
 											href="/see_more"> see more...
-										</a>
+										</i>
 									</>
 									:
 									<>
@@ -54,11 +53,10 @@ const PostTextData = ({body, toggle, style}) => {
 												content={body}
 											/>
 										</span>
-										<a
-											data-text={`${body}`}
-											data-short="true"
+										<i
+											id="expand_text"
 											href="/see_more"> see less...
-										</a>
+										</i>
 									</>
 								}
 							</p>

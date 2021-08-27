@@ -100,7 +100,7 @@
 /* Bottom Navbar Styles Section */
 
 .custom__header .bottom_navbar{
-	margin-bottom: 0px;
+	margin-bottom: 1px;
 	padding-top: 3px;
 	padding-bottom: 2px;
 	display: flex;

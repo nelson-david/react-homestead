@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {Link, Redirect} from "react-router-dom";
 import axios from "axios";
 import '../assets/css/auth.css';
-import LoginImg from "../assets/img/auth1.png";
+import RegisterImg from "../assets/img/LoginImg.jpeg";
 import * as ImIcons from "react-icons/im";
 import * as TiIcons from "react-icons/ti";
 import * as BsIcons from "react-icons/bs";
@@ -79,8 +79,12 @@ const Register = ({setCurrentComponent, devApi}) => {
 					id="auth__row">
 					<div className="col-xl-5 col-lg-6 col-md-6"
 						id="auth__imgcol">
+						<p>
+							Homesteading Singles is a Social Platform for 
+							People considering getting into Programming in General
+						</p>
 						<img
-							src={LoginImg}
+							src={RegisterImg}
 							alt="authImg"
 							className="img-fluid"
 						/>
@@ -151,10 +155,16 @@ const Register = ({setCurrentComponent, devApi}) => {
 											required={true}
 											value={dob}
 											onChange={(e) => setDob(e.target.value)}
+											style={{
+												border: "1px solid red",
+												padding: "0px",
+												paddingLeft: "10px",
+												paddingRight: "10px"
+											}}
 										/>
 									</div>
 									<div className="col-sm-6 form-group auth_group">
-										<div className="d-flex">
+										<div className="formgroup_flex">
 											<input
 												type={passwordType}
 												name="auth_password"

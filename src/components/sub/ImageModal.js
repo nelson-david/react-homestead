@@ -4,18 +4,6 @@ import { Carousel } from "react-bootstrap";
 
 import * as MdIcons from "react-icons/md";
 
-const customStyles = {
-  content : {
-    right      : 'auto',
-    bottom     : 'auto',
-    marginRight: '-50%',
-    borderRadius: "5px",
-    padding: "10px",
-    background: "rgba(211, 211, 211, 0.05)",
-    border: "none",
-  }
-};
-
 function ImageModal(props){
   const [modalIsOpen,setIsOpen] = useState(true);
 
@@ -35,7 +23,6 @@ function ImageModal(props){
       <Modal
           isOpen={modalIsOpen}
           onRequestClose={closeModal}
-          style={customStyles}
           className="preview_modal"
           overlayClassName="preview_modal_overlay"
           closeTimeoutMS={500}
@@ -45,7 +32,7 @@ function ImageModal(props){
           className="float-right"
           style={{
             marginBottom: "6px",
-            color: "blue",
+            color: "white",
             cursor: "pointer"
           }}
         />
@@ -57,15 +44,13 @@ function ImageModal(props){
           {
             props.images.map((value, index) => {
               return (
-                <Carousel.Item key={index}>
+                <Carousel.Item
+                  key={index}
+                >
                   <img
                     className="img-fluid preview_modal_img"
                     src={value}
                     alt="value"
-                    style={{
-                      borderRadius: "5px",
-                      cursor: "pointer"
-                    }}
                   />
                 </Carousel.Item>
               )

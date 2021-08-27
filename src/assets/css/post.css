@@ -1,3 +1,6 @@
+#singlepost_card{
+	padding-top: 10px;
+}
 .post_card{
 	border-radius: 0px;
 	background-color: transparent;
@@ -53,7 +56,6 @@
 
 .post_card .body div.text p{
 	padding: 10px;
-	padding-left: 10px;
 	border-radius: 6px;
 	white-space: pre-wrap;
 	margin-bottom: 0px;
@@ -63,6 +65,19 @@
 }
 .post_card .body div.text p:hover{
 	background-color: rgba(255,255,255,0.01);
+}
+.post_card .body div.text i#expand_text{
+	font-style: normal;
+	color: rgb(45, 45, 155);
+	cursor: pointer;
+	transition: 0.3s all ease-in-out;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+
+}
+.post_card .body div.text i#expand_text:hover{
+	filter: brightness(70%);
 }
 
 /*.carousel_expandcard{
@@ -496,6 +511,7 @@
 	padding: 0px;
 	width: 25%;
 	height: auto;
+	user-select: none;
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-o-user-select: none;

@@ -33,7 +33,7 @@ const SinglePost = ({value, devURL, current_user, token, devApi, reloadPost}) =>
 		<>
 			<div className="card post_card">
 				<div className="header">
-					<Link to={`/profile/${value.author_data._id}/`}>
+					<Link to={`/user/${value.author_data.username}/`}>
 						<img
 							src={AvatarImg}
 							alt="postAuthorImg"
@@ -74,7 +74,7 @@ const SinglePost = ({value, devURL, current_user, token, devApi, reloadPost}) =>
 						<PostImgCarousel
 							imageData={value.image}
 							devURL={devURL}
-							height="550px"
+							height="450px"
 						/>
 						:''
 					}

@@ -8,16 +8,17 @@ import Navbar from "./components/navigation/Navbar";
 import Home from "./pages/Home";
 import axios from "axios";
 
-const devApi = "https://homesteadapi.herokuapp.com/api/";
-const devURL = "https://homesteadapi.herokuapp.com/";
-// const devApi = "http://localhost:7500/api/";
-// const devURL = "http://localhost:7500/";
+// const devApi = "https://homesteadapi.herokuapp.com/api/";
+// const devURL = "https://homesteadapi.herokuapp.com/";
+const devApi = "http://localhost:7500/api/";
+const devURL = "http://localhost:7500/";
 
 export default function App(){
 
     const { token, removeToken, setToken, removeUser, setUser } = AuthToken();
     const [currentComponent, setCurrentComponent] = useState("home");
     const [current_user, setCurrentUser] = useState(null);
+    const [loadingPosts, setLoadingPosts] = useState(true);
     const [posts, setPosts] = useState([]);
 
     const logout = (e) => {
@@ -47,6 +48,9 @@ export default function App(){
                         }
                     }).then((res) => {
                         setPosts(res.data.posts);
+                        setTimeout(function () {
+                            setLoadingPosts(false);
+                        }, 8000);
                     });
                 }
             });
@@ -124,9 +128,8 @@ export default function App(){
                                 current_user={current_user !== null?current_user:''}
                                 posts={posts.length !== 0?posts:''}
                                 reloadPosts={reloadPosts}
-                                setCurrentComponent={
-                                    () => setCurrentComponent("home")
-                                }
+                                loadingPosts={loadingPosts}
+                                setCurrentComponent={setCurrentComponent}
                             />
                             :
                             <Login

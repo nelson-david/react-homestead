@@ -1,6 +1,5 @@
 import {useState, useEffect, useRef} from "react";
 import * as RiIcons from "react-icons/ri";
-import AvatarImg from "../../assets/img/main2.jpg";
 import SelectedImage from "../sub/SelectedImage";
 import ImageModal from "../sub/ImageModal";
 import ScrollContainer from 'react-indiana-drag-scroll';
@@ -8,7 +7,7 @@ import * as ImIcons from "react-icons/im";
 import axios from "axios";
 import {Link} from "react-router-dom";
 
-const CreatePostCard = ({token, devApi, current_user, success}) => {
+const CreatePostCard = ({token, devApi, current_user, success, devURL}) => {
 
 	const [proccess, setProccess] = useState(false);
 	const [imageSelectedState, setImageSelectedState] = useState(false);
@@ -138,7 +137,9 @@ const CreatePostCard = ({token, devApi, current_user, success}) => {
 							to={`/user/${current_user.username}`}
 							id="profileDisplayImgLink">
 							<img
-								src={AvatarImg}
+								src={`${current_user.profile_picture==="default.webp" ?
+									'https://images.alphacoders.com/781/78163.jpg'
+									:`${devURL}img/profile_photo/${current_user.profile_picture}`}`}
 								alt="displayImg"
 								loading="lazy"
 								id="profileDisplayImg"

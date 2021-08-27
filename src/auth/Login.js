@@ -59,10 +59,6 @@ const Login = ({setCurrentComponent, setToken, setUser, devApi}) => {
 				id="auth__row">
 				<div className="col-xl-5 col-lg-6 col-md-5"
 					id="auth__imgcol">
-					<p>
-						Homesteading Singles is a Social Platform for 
-						People considering getting into Programming in General
-					</p>
 					<img
 						src={LoginImg}
 						alt="authImg"
@@ -101,7 +97,7 @@ const Login = ({setCurrentComponent, setToken, setUser, devApi}) => {
 									/>
 								</div>
 								<div className="col-sm-6 col-12 form-group auth_group">
-									<div className="d-flex">
+									<div className="formgroup_flex">
 										<input
 											type={passwordType}
 											name="auth_password"

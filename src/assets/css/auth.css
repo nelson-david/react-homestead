@@ -115,3 +115,11 @@
 #auth__imgcol img{
 	border-radius: 6px;
 }
+.formgroup_flex{
+	display: -webkit-flex!important;
+	display: -moz-none;
+}
+.formgroup_flex input{
+}
+.formgroup_flex button{
+}

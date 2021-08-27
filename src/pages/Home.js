@@ -15,7 +15,7 @@ const Home = ({setCurrentComponent, token, devApi, current_user,
 	const [upload_success, setUploadSuccess] = useState(false);
 
 	useEffect(() => {
-		setCurrentComponent();
+		setCurrentComponent("home");
 	}, [setCurrentComponent])
 
 	const callSuccessFunction = () => {
@@ -26,7 +26,7 @@ const Home = ({setCurrentComponent, token, devApi, current_user,
 	return (
 		<div className="container-fluid custom__container">
 			<div className="row">
-				<div className="col-xl-3 col-lg-3 col-md-5 col-sm-2"
+				<div className="col-xl-3 col-lg-3 col-md-5 col-sm-5"
 					id="sidebar__col">
 					<Sidebar
 					/>
@@ -35,11 +35,12 @@ const Home = ({setCurrentComponent, token, devApi, current_user,
 				<Switch>
 					<Route exact path={`/`}>
 						<div className={`col-xl-5 col-lg-5 
-							col-md-7 col-sm-10 col-12`}
+							col-md-7 col-sm-7 col-12`}
 							id="content_col">
 							<CreatePostCard
 								token={token}
 								devApi={devApi}
+								devURL={devURL}
 								current_user={current_user}
 								success={callSuccessFunction}
 							/>
@@ -62,6 +63,7 @@ const Home = ({setCurrentComponent, token, devApi, current_user,
 								token={token}
 								devApi={devApi}
 								reloadPost={reloadPosts}
+								setCurrentComponent={setCurrentComponent}
 							/>
 						</div>
 						<div className="col-xl-4 col-lg-4"
@@ -85,6 +87,7 @@ const Home = ({setCurrentComponent, token, devApi, current_user,
 							token={token}
 							current_user={current_user}
 							reloadPost={reloadPosts}
+							setCurrentComponent={setCurrentComponent}
 						/>
 					</Route>
 					<Route path={`/explore`}>
