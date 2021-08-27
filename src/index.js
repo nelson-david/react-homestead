@@ -5,6 +5,7 @@ import 'mdbootstrap/css/mdb.css';
 import App from './App';
 import './index.css';
 import './media.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 ReactDOM.render(
 	<React.StrictMode>

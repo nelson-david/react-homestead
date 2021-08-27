@@ -4,8 +4,8 @@ import axios from "axios";
 import '../assets/css/auth.css';
 import RegisterImg from "../assets/img/LoginImg.jpeg";
 import * as ImIcons from "react-icons/im";
-import * as TiIcons from "react-icons/ti";
 import * as BsIcons from "react-icons/bs";
+import { ToastContainer, toast } from 'react-toastify';
 
 const Register = ({setCurrentComponent, devApi}) => {
 
@@ -15,10 +15,14 @@ const Register = ({setCurrentComponent, devApi}) => {
 	const [dob, setDob] = useState("");
 
 	const [proccess, setProccess] = useState(false);
-	const [acctError, setAcctError] = useState(false);
-	const [ageError, setAgeError] = useState(false);
 	const [done, setDone] = useState(false);
 	const [passwordType, setPasswordType] = useState("password");
+
+
+	// Notifications
+	const regError = () => toast("An Error Occured, Please be sure to fill details correctly");
+	const ageError = () => toast("Your Age Is Below 18");
+	const usernameError = () => toast("Username is already taken");
 
 	useEffect(() => {
 		setCurrentComponent();
@@ -36,39 +40,50 @@ const Register = ({setCurrentComponent, devApi}) => {
 
 	const handleRegister = (e) => {
 		e.preventDefault();
+		setProccess(true);
 
 		const age = parseInt(String(new Date()).split(' ')[3]) - 
 			parseInt(String(dob).slice(0,4));
 
 		if (age < 18){
-			setAgeError(true);
+			setProccess(false);
+			ageError();
 		}else{
-			setProccess(true);
 			axios({
 				method:"POST",
 				data: {
 					email, username, password, dob, age
 				},
 				url: `${devApi}auth/register/`,
-			}).then((res) => {
+			})
+			.then((res) => {
 				setUsername("");
 				setPassword("");
 				setEmail("");
 				setDob("");
 				setProccess(false);
 				if (res.status === 200){
-					setDone(true)
-				}else{
-					if (res.status === 400) {
-						setAcctError(true);
+					if (res.data.error){
+						usernameError();
+					}else{
+						setDone(true);
 					}
 				}
-			});
+			})
+			.catch((error) => {
+				setUsername("");
+				setPassword("");
+				setEmail("");
+				setDob("");
+				setProccess(false);
+				regError();
+			})
 		}
 	}
 
 	return (
 		<>
+		<ToastContainer />
 		{
 			done ?
 			<Redirect to="/login" />
@@ -92,30 +107,6 @@ const Register = ({setCurrentComponent, devApi}) => {
 					<div className="col-xl-6 col-xl-6 col-md-6 col-sm-8"
 						id="auth__cardcol">
 						<div className="card auth__card">
-							<div id="error_div">
-								{
-									acctError?
-									<div className="alert danger_alert">
-										Invalid Username Or Password
-										<i onClick={() => setAcctError(false)}>
-											<TiIcons.TiTimes />
-										</i>
-									</div>
-									:
-									<>
-									{
-										ageError?
-										<div className="alert danger_alert">
-											Your Age Is Below 18
-											<i onClick={() => setAgeError(false)}>
-												<TiIcons.TiTimes />
-											</i>
-										</div>
-										:''
-									}
-									</>
-								}
-							</div>
 							<p id="auth__legend">Create An Account!</p>
 
 							<form id="signin_form" onSubmit={handleRegister}>

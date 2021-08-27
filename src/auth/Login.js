@@ -4,16 +4,18 @@ import axios from "axios";
 import '../assets/css/auth.css';
 import LoginImg from "../assets/img/LoginImg.jpeg";
 import * as ImIcons from "react-icons/im";
-import * as TiIcons from "react-icons/ti";
 import * as BsIcons from "react-icons/bs";
+import { ToastContainer, toast } from 'react-toastify';
 
 const Login = ({setCurrentComponent, setToken, setUser, devApi}) => {
 
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [proccess, setProccess] = useState(false);
-	const [acctError, setAcctError] = useState(false);
 	const [passwordType, setPasswordType] = useState("password");
+
+	const userError = () => toast("Invalid Username (User does not exist)");
+	const passwordError = () => toast("Password is incorrect");
 
 	useEffect(() => {
 		setCurrentComponent();
@@ -38,22 +40,30 @@ const Login = ({setCurrentComponent, setToken, setUser, devApi}) => {
 				username, password
 			},
 			url: `${devApi}auth/login/`,
-		}).then((res) => {
-			setUsername("");
-			setPassword("");
-			setProccess(false);
-			if (res.status === 401 || res.status === 400){
-				setAcctError(true);
-			}
+		})
+		.then((res) => {
 			if (res.status === 200){
-				setUser(res.data.user);
-				setToken(res.data.token);
+				setUsername("");
+				setPassword("");
+				setProccess(false);
+				if (res.data.error){
+					const error = res.data.error;
+					if (error === "password"){
+						passwordError();
+					}else{
+						userError();
+					}
+				}else{
+					setUser(res.data.user);
+					setToken(res.data.token);
+				}
 			}
 		});
 	}
 
 	return (
 		<div className="container-fluid">
+			<ToastContainer />
 			<br />
 			<div className="row d-flex"
 				id="auth__row">
@@ -68,18 +78,6 @@ const Login = ({setCurrentComponent, setToken, setUser, devApi}) => {
 				<div className="col-xl-6 col-xl-6 col-md-7 col-sm-10"
 					id="auth__cardcol">
 					<div className="card auth__card">
-						<div id="error_div">
-							{
-								acctError?
-								<div className="alert danger_alert">
-									Invalid Username Or Password
-									<i onClick={() => setAcctError(false)}>
-										<TiIcons.TiTimes />
-									</i>
-								</div>
-								:''
-							}
-						</div>
 						<p id="auth__legend">Welcome Back!</p>
 
 						<form id="signin_form" onSubmit={handleLogin}>

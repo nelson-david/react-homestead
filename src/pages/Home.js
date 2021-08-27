@@ -26,7 +26,7 @@ const Home = ({setCurrentComponent, token, devApi, current_user,
 	return (
 		<div className="container-fluid custom__container">
 			<div className="row">
-				<div className="col-xl-3 col-lg-3 col-md-5 col-sm-5"
+				<div className="col-xl-3 col-lg-3 col-md-4 col-sm-5"
 					id="sidebar__col">
 					<Sidebar
 					/>
@@ -35,7 +35,7 @@ const Home = ({setCurrentComponent, token, devApi, current_user,
 				<Switch>
 					<Route exact path={`/`}>
 						<div className={`col-xl-5 col-lg-5 
-							col-md-7 col-sm-7 col-12`}
+							col-md-8 col-sm-7 col-12`}
 							id="content_col">
 							<CreatePostCard
 								token={token}

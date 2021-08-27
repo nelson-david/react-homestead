@@ -35,7 +35,7 @@ const Profile = ({posts, devURL, current_user, token, devApi}) => {
 		<>
 		{
 			fetching?
-			<div className="col-xl-5 col-lg-5">
+			<div className="col-xl-5 col-lg-5 col-md-6 col-sm-6 col-12">
 				<LoadingDiv
 					icon={<ImIcons.ImSpinner4 />}
 				/>
@@ -43,7 +43,7 @@ const Profile = ({posts, devURL, current_user, token, devApi}) => {
 			:
 			<>
 				<div className={`col-xl-6 col-lg-6 
-					col-md-7 col-sm-10 col-12`}
+					col-md-8 col-sm-7 col-12 profile__contentcol`}
 					id="content_col">
 					{
 						user !== null?
@@ -89,7 +89,7 @@ const Profile = ({posts, devURL, current_user, token, devApi}) => {
 						</>:''
 					}
 				</div>
-				<div className="col-xl-3 col-lg-4"
+				<div className="col-xl-3 col-lg-3"
 					id="rightbar_col">
 					{
 						user !== null?

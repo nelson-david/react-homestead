@@ -9,6 +9,8 @@ import {Link} from "react-router-dom";
 import {useRef, useState, useEffect} from "react";
 import axios from "axios";
 import Modal from 'react-modal';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const PostFooter = ({post, current_user, token, devApi,
 	nullComment, devURL, reloadPost}) => {
@@ -18,8 +20,6 @@ const PostFooter = ({post, current_user, token, devApi,
 
 	const [modal, setModal] = useState(false);
 	const [deleteModal, setDeleteModal] = useState(false);
-
-	const [copySuccess, setCopySuccess] = useState(false);
 	const [deleteSuccess, setDeleteSuccess] = useState(false);
 
 	useEffect(() => {
@@ -43,6 +43,7 @@ const PostFooter = ({post, current_user, token, devApi,
 
 	const like_post = (e) => {
 		e.preventDefault();
+		console.log("Liked: ", liked)
 		if (liked === false){
 			setLiked(true);
             axios({
@@ -61,8 +62,12 @@ const PostFooter = ({post, current_user, token, devApi,
                 headers: {
                     'Authorization': token
                 }
-            }).then((res) => {
-            });	
+            })
+			.then((res) => {
+            })
+			.catch((error) => {
+				console.log("Error: ", error);
+			})
 		}
 	}
 
@@ -77,6 +82,7 @@ const PostFooter = ({post, current_user, token, devApi,
 
 	return (
 		<>
+		<ToastContainer />
 		{
 			modal?
 			<PostMoreModal
@@ -85,7 +91,6 @@ const PostFooter = ({post, current_user, token, devApi,
 				post={post}
 				devURL={devURL}
 				current_user={current_user}
-				setCopySuccess={setCopySuccess}
 			/>:''
 		}
 		{
@@ -132,12 +137,6 @@ const PostFooter = ({post, current_user, token, devApi,
 			</ul>
 		</div>
 		{
-			copySuccess?
-			<div className="card w-100 fixed-bottom alert__card">
-				<span>Link Copied Successfully</span>
-			</div>:''
-		}
-		{
 			deleteSuccess?
 			<div className="card w-100 fixed-bottom alert__card">
 				<span>Post Successfully Deleted</span>
@@ -147,18 +146,19 @@ const PostFooter = ({post, current_user, token, devApi,
 	)
 }
 
-const PostMoreModal = ({toggleModal, post, devURL, setCopySuccess,
+const PostMoreModal = ({toggleModal, post, devURL,
 	current_user, toggleDeleteModal}) => {
 	Modal.setAppElement('#root');
 
+	const copy_notify = () => {
+		toast("Link Copied Successfully");
+	}
+
 	const copyLink = (e) => {
 		e.preventDefault();
-		window.navigator.clipboard.writeText(`https://${devURL}p/${post._id}`);
-		setCopySuccess(true);
+		window.navigator.clipboard.writeText(`${devURL}p/${post._id}`);
+		copy_notify();
 		toggleModal(e);
-		setTimeout(function(){
-			setCopySuccess(false);
-		}, 4000);
 	}
 
 	const following = (e) => {

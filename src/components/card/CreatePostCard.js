@@ -111,6 +111,9 @@ const CreatePostCard = ({token, devApi, current_user, success, devURL}) => {
 			}
 		});
 	}
+	const focusOnEditor = () => {
+		document.getElementById('post_textdata').focus();
+	}
 
 	return (
 	<div className="card add__postcard">
@@ -151,6 +154,7 @@ const CreatePostCard = ({token, devApi, current_user, success, devURL}) => {
 								data-placeholder={`@${current_user.username}, 
 									You Got An Update`}
 								ref={postTextRef}
+								onClick={focusOnEditor}
 								id="post_textdata"></span>
 						</div>
 					</div>
