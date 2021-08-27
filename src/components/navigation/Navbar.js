@@ -2,7 +2,7 @@ import '../../assets/css/navbar.css';
 import {useState} from "react";
 import { Link, withRouter} from "react-router-dom";
 import SearchModal from "../misc/SearchModal";
-import * as BsIcons from "react-icons/bs";
+//import * as BsIcons from "react-icons/bs";
 import * as VsIcons from "react-icons/vsc";
 import Modal from "react-modal";
 import * as CgIcons from "react-icons/cg";
@@ -16,17 +16,16 @@ const Navbar = ({activeComponent, logout, token, devApi, devURL,
 	const bannedComponents = ["login", "register", "single_post"]
 	const [searchModal, setSearchModal] = useState(false);
 	const [logoutModal, setLogoutModal] = useState(false);
-	const [bannedState, setBannedState] = useState(false);
 
 	const toggleSearchModal = (e) => {
 		e.preventDefault();
 		setSearchModal(!searchModal);
 	}
 
-	const toggleLogoutModal = (e) => {
-		e.preventDefault();
-		setLogoutModal(!logoutModal);
-	}
+	// const toggleLogoutModal = (e) => {
+	// 	e.preventDefault();
+	// 	setLogoutModal(!logoutModal);
+	// }
 
 	return (
 	<header className="custom__header">
