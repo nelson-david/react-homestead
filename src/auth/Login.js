@@ -42,10 +42,10 @@ const Login = ({setCurrentComponent, setToken, setUser, devApi}) => {
 			setUsername("");
 			setPassword("");
 			setProccess(false);
-			if (res.data.message === false){
+			if (res.status === 401 || res.status === 400){
 				setAcctError(true);
 			}
-			if (res.data.message === true){
+			if (res.status === 200){
 				setUser(res.data.user);
 				setToken(res.data.token);
 			}
